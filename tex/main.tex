@@ -12,7 +12,7 @@
 Intelligent Systems Engineering 2023/24 \newline
 \newline
 Literature survey: \\
-Security in Autonomous systems focusing on Autonomous Vehicles
+Security in Autonomous systems focusing on self-driving cars
 }
 
 \author{
@@ -24,128 +24,38 @@ Security in Autonomous systems focusing on Autonomous Vehicles
 \begin{document}
 
     \maketitle
-    Abstract
     \begin{abstract}
-        The rapid development of autonomous vehicles (AVs)
-        introduces transformative potential for modern transportation systems,
-        but it also raises critical concerns regarding cybersecurity.
-        As AVs increasingly rely on complexity, the attack surface for potential threats expands,
-        demanding robust and proactive security measures.
-        This survey aims to provide an overview of current research on security challenges in autonomous vehicles,
-        focusing on key cybersecurity threats, standards, and industry practices.
-        Emphasizing the need for a multi-layered approach to cybersecurity in AVs,
-        integrating secure software development, hardware resilience, and regulatory compliance is essential.
+    \input{1-abstract}
     \end{abstract}
 
     \newpage
-
     \tableofcontents
-
     \newpage
 
     \section{Introduction}\label{sec:introduction}
-
-    This review will not cover the ethical implications or the differences between human-driven and autonomous vehicles in terms of accidents and fatalities.
-    The focus is on the security aspects of autonomous vehicles, in particular the cybersecurity threats, standards, and industry practices used to secure these systems.
-
-    \subsection{Historical roots}\label{subsec:historical-roots}
-
-    The development of autonomous vehicles is a significant milestone in the evolution of intelligent transport systems.
-    It is important to start with some historical context to understand the current state of autonomous vehicles and then,
-    the security implications.
-
-    Vehicle automation has roots dating back to 1918 (Pendleton et al., 2017),
-    with General Motors showcasing the first concept of an automated vehicle in 1939 (Shladover, 2018).
-    Initial R\&D efforts were led by General Motors and the Radio Corporation of America Sarnoff Laboratory in the 1950s
-    (Shladover, 2018).
-    From 1964 to 2003, various government and academic initiatives in the US, Europe,
-    and Japan focused on automated buses, truck platoons, and advanced driving systems
-    (Shladover, 2018).
-    A significant boost came from DARPA’s Grand Challenges Program in the 2000s \cite{darpa_grand_challenges_book},
-    where AVs first navigated desert terrains in 2005 and urban roads by 2007 (Pendleton et al., 2017; Shladover, 2018).
-
-    Since then, researchers have rapidly progressed in academia and industry.
-    Volvo, Tesla, Audi, BMW,
-    Mercedes-Benz and Nissan are some of the major car manufacturers that have invested in AV technology.
-
-    \cite{faisal2019understanding}
-
-    \subsection{Overview of Autonomous Vehicles}\label{subsec:overview-of-autonomous-vehicles}
-    Introduction on Autonomous Systems, focus on Vehicles and then security.
-
-    \subsection{Social implications}\label{subsec:social-implications}
-
-    This section aims to provide a little insight into the social implications of autonomous vehicles.
-    The introduction of autonomous vehicles (AVs) is expected to have a profound impact on society \cite{thomas2020perception}, transforming transportation systems \cite{intelligent_transportation_2023}
-    , urban planning \cite{impact_autonomous_vehicles_2018}, and the economy \cite{economic_aspects_2020}.
-
-    \subsection{Security implications}\label{subsec:security-implications}
-
-    \subsection{Motivation}\label{subsec:motivation-for-the-study}
-
-    \subsection{Objectives}\label{subsec:research-objectives}
-
-    \subsection{Structure of the Survey}\label{subsec:structure-of-the-survey}
-
+    \input{2-introduction}
     \section{Methodology}\label{sec:methodology}
+    \input{3-methodology}
 
-    \subsection{Premises}\label{subsec:premises}
+    \section{Cybersecurity Threats in Autonomous Vehicles}\label{sec:cybersecurity-threats-in-autonomous-vehicles}
+    \input{4-cyber-threats}
 
-    In this review,
-    we aim to provide a comprehensive overview of the current state of research on security in autonomous vehicles.
-    We focus on the key cybersecurity threats, standards, and industry practices in the field,
-    keeping in mind that the landscape is rapidly evolving.
-    We aim to identify the most critical challenges and opportunities for future research in this area
-    and underline the importance of a multi-layered approach to cybersecurity in AVs.
-    The ethical implications of the technology or the comparison between human-driven and autonomous vehicles in terms of accidents and fatalities will not be covered.
+    \section{Cybersecurity by design standards}\label{sec:cybersecurity-by-design-standards}
+    \input{5-standards}
 
+    \section{Implemented Cybersecurity Solutions}\label{sec:implemented-cybersecurity-solutions}
+    \input{6-actual-solutions}
 
-    \subsection{Research Question}\label{subsec:research-question}
+    \section{Future Trends}\label{sec:future-trends}
+    \input{7-future-trends}
 
-    Starting from the main threats in terms of cybersecurity regarding AV the review will analyze the main actual opportunities to improve and regulate the security of these systems.
-    After that, the review will focus on the industry practices concluding in the future trends and emerging technologies that could enhance and simplify the security process of AVs.
-    The goal of this review is to address the following research questions:
+    \section{Discussion and analysis}\label{sec:discussion-and-analysis}
+    \input{8-discussion-analysis}
 
-    \begin{enumerate}
-        \item \textit{What are the most significant cybersecurity threats facing autonomous vehicles, and how these threats evolve with advancements in vehicle-to-everything (V2X) communication and other emerging technologies?}
-        ""This question aims to identify specific types of attacks (e.g., sensor spoofing, remote hijacking, and data breaches) and their implications for the safety and functionality of autonomous vehicles. It should guide a thorough analysis of the threat landscape.""
+    \section{Conclusions}\label{sec:conclusions}
+    \input{9-conclusion}
 
-        \item \textit{What existing standards and regulatory frameworks govern cybersecurity by design in autonomous vehicles, and how effectively do they address current and future security challenges?}
-
-        ""This question focuses on evaluating the current standards (such as ISO/SAE 21434 and UNECE WP.29) to determine whether they sufficiently cover security needs across the lifecycle of autonomous vehicle development""
-
-        \item \textit{What cybersecurity solutions and practices have been implemented by autonomous vehicle manufacturers, and how do they align with best practices in secure software development and system resilience?}
-
-        ""This question seeks to explore the practical approaches taken by leading manufacturers (e.g., Tesla, Waymo) in integrating security measures into their systems, such as intrusion detection, secure over-the-air (OTA) updates, and encryption.
-        \item \textit{What future trends and emerging technologies, such as artificial intelligence and blockchain, are being explored to enhance the cybersecurity of autonomous vehicles, and what challenges do they pose in real-world applications?}
-        ""This question addresses the forward-looking aspect of autonomous vehicle security, examining innovative solutions that could improve security but also introduce new risks or technical hurdles.""
-    \end{enumerate}
-
-    \subsection{Selection Criteria}\label{subsec:selection-criteria}
-
-    \subsection{Search Strategy}\label{subsec:search-strategy}
-
-    The search strategy for this review involved a systematic exploration of electronic databases, books, and relevant publications.
-
-    The following databases were used to identify relevant literature:
-
-    \begin{enumerate}
-        \item IEEE Xplore
-        \item WebOfScience
-        \item SpringerLink
-        \item Google Scholar
-    \end{enumerate}
-
-    Multiple searches were conducted, initially to discover in general the state of the art in the field of autonomous vehicles and then to focus on the security aspects.
-    The search terms used included combinations of the following keywords:
-
-    \subsection{Quality Assessment}\label{subsec:quality-assessment}
-
-    
-
-
-    \newpage
-    \nocite{*}
+    ~\nocite{*}
     \bibliographystyle{plain}
     \bibliography{bibliography}
 
