@@ -1,5 +1,162 @@
 \subsection{Communication and Network}\label{subsec:v2x-communication-and-network}
 
+\subsubsection{AMOEBA for location privacy}
+\begin{enumerate}
+    \item \textbf{Purpose}: Mitigates unauthorized tracking in VANETs using pseudonymization and random silent periods.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item Divides road networks into observed and unobserved (mixing) zones.
+        \item Vehicles in unobserved zones change directions, speeds, and pseudonyms to prevent tracking.
+        \item Utilizes navigation groups for anonymous access to Location-Based Services (LBS).
+        \item Random silent periods between pseudonym updates in Vehicle-to-Vehicle (V2V) communications to unlink identities.
+    \end{enumerate}
+    \item \textbf{Limitations}: The leader of the navigation group may suffer privacy loss and computational overhead due to its role in the V2I applications.
+\end{enumerate}
+
+\subsubsection{Cryptographic MIX-Zone (CMIX)}
+\begin{enumerate}
+    \item \textbf{Purpose}: Protects privacy through cryptographic methods in mixing zones.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item Road-Side Units (RSUs) provide vehicles with public and private keys.
+        \item Messages are encrypted inside mixing zones, and pseudonyms are exchanged for anonymous communication.
+        \item Uses Pseudonym Certification Authority (PCA) for cross-certification and pseudonym validation.
+        \item Hardware Security Modules (HSMs) and tamper-proof protections may be used to ensure security, though cost can be prohibitive.
+        \item Rotating certificates to avoid correlation between different locations.
+    \end{enumerate}
+    \item \textbf{Challenges}: High cost of cryptographic hardware and managing cross-certification of pseudonyms.
+\end{enumerate}
+
+\subsubsection{K-Anonymity}
+\begin{enumerate}
+    \item \textbf{Purpose}: Ensures location privacy in LBS by making a vehicle’s position indistinguishable from others.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item \emph{K} refers to the minimum number of vehicles with similar location information.
+        \item Utilizes a trusted central server that anonymizes data via spatial and temporal cloaking.
+        \item The anonymity level (\emph{K}) and transmission of location data are customizable by users.
+        \item A node only sends location information if there are \emph{K-1} other vehicles nearby.
+    \end{enumerate}
+    \item \textbf{Advantages}: Scalable and adaptable privacy protection based on the number of vehicles in proximity.
+\end{enumerate}
+
+\subsubsection{Dynamic Change MAC/PHY}
+\begin{enumerate}
+    \item \textbf{Purpose}: Protects privacy by dynamically changing network-layer identifiers in VANETs.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item Dynamically swaps MAC/PHY addresses on Wi-Fi networks (similar to DHCP dynamic IP addressing).
+        \item Randomization of MAC/PHY addresses prevents long-term tracking by adversaries.
+        \item Incorporates cryptographic key exchange to ensure security during the address swapping process.
+    \end{enumerate}
+    \item \textbf{Advantages}: Increases privacy by making it harder to track vehicles based on MAC/PHY addresses.
+\end{enumerate}
+
+\subsubsection{Density-Based Location Privacy (DLP)}
+\begin{enumerate}
+    \item \textbf{Purpose}: Enhances privacy based on the density of nearby vehicles.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item Vehicles change pseudonyms only when a certain number (\emph{k}) of neighboring nodes is reached.
+        \item Operates with pre-equipped pseudonyms that are switched dynamically.
+        \item The probability of tracking decreases as traffic density and speed variations increase.
+    \end{enumerate}
+    \item \textbf{Advantages}: Reduces location tracking probability in high-traffic areas, and improves performance compared to AMOEBA and Mix-Zone.
+    \item \textbf{Challenges}: Optimal pseudonym change thresholds need to be determined dynamically.
+\end{enumerate}
+
+\subsubsection{Cybersecurity Issues and Countermeasures}
+\begin{enumerate}
+    \item \textbf{Fake Alerts}: False traffic alerts or CAMs can disrupt road operations. \textbf{Countermeasures}: Cryptographic authentication (e.g., ECDSA) to validate message legitimacy.
+    \item \textbf{Data Theft}: Attackers can impersonate network nodes to capture sensitive packets. \textbf{Countermeasures}: Encryption and robust key management.
+    \item \textbf{Unauthorized Profiling}: Misuse of personal data for profiling. \textbf{Countermeasures}: Pseudonymization to prevent linking identities to personal data.
+    \item \textbf{Illusion Attacks}: False traffic warnings broadcast to create accidents or congestion. \textbf{Countermeasures}: Plausibility validation of messages.
+    \item \textbf{Fake Identity \& Impersonation}: Adversaries impersonate legitimate vehicles for malicious activities. \textbf{Countermeasures}: ID-based cryptographic solutions to verify vehicle authenticity.
+\end{enumerate}
+
+
+\subsubsection{potential-threats-vanets}\label{subsubsec:potentials-threats-vanets}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Attack} & \textbf{Compromised Services} & \textbf{Countermeasures} \\ \hline
+        DOS & Availability, authentication & Use the bit commitment and signature-based authentication technique \\ \hline
+        Jamming & Availability & Use frequency hopping technique, direct-sequence spread spectrum (DSSS) \\ \hline
+        Malware & Availability & Reliable hardware and digital signature of software \\ \hline
+        Broadcast tampering & Availability, integrity & Cryptographic primitives are enabled for prevention, but a non-repudiation mechanism may exist \\ \hline
+        Blackhole, grayhole & Availability & Reliable hardware and digital signature of software \\ \hline
+        Greedy behavior & Availability & Use intrusion detection systems (IDSs) \\ \hline
+        Spamming & Availability, confidentiality & Reliable hardware and digital signature of software \\ \hline
+        Eavesdropping & Confidentiality, integrity & Exploit physical layer security protocols \\ \hline
+        Traffic analysis & Confidentiality & Use encryption techniques \\ \hline
+        Man-in-the-middle & Authentication, confidentiality, integrity & Robust authentication technique such as digital certificates \\ \hline
+    \end{tabular}
+    \label{tab:Summary of Attacks and Countermeasures. }
+\end{table}
+
+table from \cite{sheikh2019comprehensive} .
+
+
+This section highlights various attacks and threats that affect the security services in VANET systems, including availability, confidentiality, authentication, data integrity, and nonrepudiation.
+
+\subsubsection{Attack on Availability}
+\begin{enumerate}
+    \item \textbf{Denial-of-Service (DoS) Attacks}: Block vehicle communication, disrupting operations; can occur as distributed denial of service (DDoS).
+    \item \textbf{Jamming Attack}: Uses strong signals to disrupt communication channels, critical for safety applications.
+    \item \textbf{Malware Attack}: Penetrates OBUs and RSUs, leading to system malfunctions.
+    \item \textbf{Broadcast Tampering Attack}: Untrustworthy vehicles alter or replicate messages, hiding critical safety information.
+    \item \textbf{Blackhole Attack}: Malicious nodes receive but do not forward packets, obstructing communication.
+    \item \textbf{Grayhole Attack}: Selectively drops packets, similar to blackhole attacks.
+    \item \textbf{Greedy Behavior Attack}: Misuses the message authentication code (MAC) protocol, causing traffic overload and collisions.
+    \item \textbf{Spamming Attack}: Injects spam messages into the system, using bandwidth inefficiently.
+\end{enumerate}
+
+\subsubsection{Attack on Confidentiality}
+\begin{enumerate}
+    \item \textbf{Eavesdropping Attack}: Intercepts confidential information, such as user identity and location.
+    \item \textbf{Traffic Analysis Attack}: Analyzes message transmission patterns to extract sensitive information.
+    \item \textbf{Man-in-the-Middle Attack}: Intercepts and alters messages between communicating vehicles.
+    \item \textbf{Social Attack}: Distracts drivers with unethical messages, affecting their performance.
+\end{enumerate}
+
+\subsubsection{Attack on Authentication}
+\begin{enumerate}
+    \item \textbf{Sybil Attack}: Uses multiple fake identities to disrupt normal operations and mislead other vehicles.
+    \item \textbf{Tunneling Attack}: Links distant parts of the network, allowing unauthorized communication.
+    \item \textbf{GPS Spoofing}: Creates false GPS information, misleading vehicles about their location.
+    \item \textbf{Node Impersonation Attack}: Uses a valid user ID to impersonate another user.
+    \item \textbf{Free-Riding Attack}: Exploits other users' authentication efforts without contributing.
+    \item \textbf{Replay Attack}: Replays valid data to create unauthorized effects.
+    \item \textbf{Key/Certificate Replication Attack}: Uses duplicates to confuse traffic authorities.
+    \item \textbf{Message Tampering}: Alters exchanged messages in V2V or V2I communication.
+    \item \textbf{Masquerading Attack}: Uses false identities to gain unauthorized access.
+\end{enumerate}
+
+\subsubsection{Attack on Data Integrity}
+\begin{enumerate}
+    \item \textbf{Masquerading Attack}: Uses valid credentials to broadcast false messages.
+    \item \textbf{Replay Attack}: Repeats or delays transmissions, complicating emergency responses.
+    \item \textbf{Message Tampering Attack}: Modifies messages to influence driving behavior.
+    \item \textbf{Illusion Attack}: Generates misleading traffic warnings based on malicious data.
+\end{enumerate}
+
+\subsubsection{Attack on Non-repudiation}
+\begin{enumerate}
+    \item \textbf{Repudiation Attack}: Denies involvement in sending or receiving messages, complicating disputes.
+\end{enumerate}
+
+
+%//Cybersecurity and Privacy Protection in Vehicular Networks (VANETs)
+%\cite{macena2023cybersecurity}
+%// survey on VANETs sec serv.
+%\cite{sheikh2019comprehensive}
+%//Simulating attacks on Vanets
+%\cite{simulation-attacks-vanets}
+
+
 \subsection{Perception System}\label{subsec:perception-system}
+
 
 \subsection{Software and Firmware}\label{subsec:software-and-firmware}
