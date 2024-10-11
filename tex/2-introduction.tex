@@ -149,11 +149,11 @@ For example, communication in AVs can be classified either by range or by the ty
 \end{enumerate}
 
 Or by the type of interaction:
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{Vehicle-to-Vehicle (V2V)}
     \item \textbf{Vehicle-to-Infrastructure (V2I)}
     \item \textbf{Vehicle-to-Everything (V2X)}
-\end{itemize}
+\end{enumerate}
 
 \paragraph{Vehicle-to-Vehicle (V2V)}
 
@@ -213,11 +213,18 @@ Some of the main sensors used in AVs are:
     \item \textbf{IMU (Inertial Measurement Unit)}: IMU sensors measure the vehicle's acceleration, orientation, and angular velocity.
 \end{enumerate}
 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/perception}
+    \caption{Main sensors used in AVs}
+    \label{fig:sensors}
+\end{figure}
+
 These sensors provide the critical data needed for navigation, obstacle
 detection, and decision-making processes and are essential for ensuring the safety.
 A tempering of these sensors can lead to dangerous situations \cite{unknown2020connected,cybersec} .
 
-TODO In the next sections LINK A CYBER_TREATS there will be a deep dive into the main sensors used in AVs and their vulnerabilities.
+TODO In the next sections LINK A CYBERTREATS there will be a deep dive into the main sensors used in AVs and their vulnerabilities.
 
 
 \subsection{Motivation}\label{subsec:motivation}
@@ -228,7 +235,7 @@ These incidents highlighted the importance of security in AV systems.
 As a result, both manufacturers and researchers recognized the need to strengthen security measures.
 This realization led to an emphasis on improving security by design.
 
-There are some proposals like \cite{adu-kyere2023self-aware} that propose a self-aware security framework for AVs, and some standards like \cite{iso_21434_2021} that are trying to regulate the security of these systems, from the design to the deployment.
+There are some proposals like \cite{adu-kyere2023self-aware} that propose a self-aware security framework for AVs, and some standards like \cite{comparison-standard} that are trying to regulate the security of these systems, from the design to the deployment.
 The problem is that the security of AVs is a complex issue to be solved by a single solution and without the collaboration of all the stakeholders.
 
 The increasing introduction of new technologies in the automotive sector complicates the security of these systems.
@@ -240,7 +247,7 @@ The goal is to provide a holistic vision of the main threats and the current sol
 
 Before introducing new threats of new autonomous vehicle technologies, it is important to understand some historical key attacks.
 In the past, researchers have demonstrated various attacks on AVs, including remote hijacking, sensor spoofing, and data breaches.
-The attack surface of AVs is expanding due to the increasing complexity of these systems, which rely on a combination of hardware, software, and communication technologies \cite{cybersec}.
+The attack surface of AVs is expanding due to the increasing complexity of these systems, which rely on a combination of hardware, software, and communication technologies\cite{cybersec}.
 This expansion is due to the aggressive attempts of manufacturers to
 make vehicles fully autonomous in a short period of time and without considering the security implications.
 This implied a lot of new technologies and new communication protocols keeping the focus always on the functionalities offered to the driver in terms of comfort.
@@ -251,7 +258,7 @@ Some famous attacks that bring the attention to the security of AVs are:
     \item The Jeep Cherokee hack in 2015, where researchers remotely hijacked a Jeep Cherokee through its infotainment system, demonstrating the potential risks of cyber-attacks on connected vehicles \cite{miller2015remote} .
     \item The Tesla Model S hack in 2016, where researchers exploited vulnerabilities in the vehicle's software to take control of the car's brakes, door locks, and other critical systems \cite{tesla_hack}.
     \item The Nissan Leaf hack in 2016, where researchers demonstrated how an attacker could remotely control the vehicle's heating and air conditioning systems, drain the battery, and access the driver's personal information.
-    \item The VW group hack in 2016, where researchers discovered vulnerabilities in the keyless entry systems of several VW group vehicles, allowing attackers to unlock the doors and start the engine without the key fob \cite{garcia2016lock}.
+    \item The VW group hacked in 2016, where researchers discovered vulnerabilities in the keyless entry systems of several VW group vehicles, allowing attackers to unlock the doors and start the engine without the key fob \cite{garcia2016lock}.
 \end{enumerate}
 
 These are only some examples of the potential risks associated with AVs and the need for robust cybersecurity measures to protect against cyber-attacks.
@@ -261,7 +268,7 @@ One of the latest is the Tesla cybertruck vulnerabilities that have and continue
 
 This section aims to provide a little insight into the social implications of autonomous vehicles.
 The introduction of autonomous vehicles (AVs) is expected to have a profound impact on society \cite{thomas2020perception}, transforming transportation systems \cite{intelligent_transportation_2023}
-, urban planning \cite{impact_autonomous_vehicles_2018}, and the economy \cite{economic_aspects_2020}.
+, urban planning\cite{impact_autonomous_vehicles_2018}, and the economy~\cite{economic_aspects_2020}.
 
 \begin{table}[ht]
     \centering
