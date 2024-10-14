@@ -1,20 +1,31 @@
-\subsection{Communication and Network}\label{subsec:v2x-communication-and-network}
-
-DDoS -> cite this sontakke2022impact
-
+In this section, the goal is to discuss potential threats about the two macro-areas covered by this report:
+communication (specifically VANETs) and the perception system.
+Since there are two crucial aspects of the AVs, the potential threats are numerous and varied.
+The multitude of technologies involved in these two areas makes the AVs vulnerable to a wide range of attacks,
+decreasing the threshold of security.
 Attackers can exploit these vulnerabilities to compromise the safety and functionality of AVs, posing significant risks to passengers, pedestrians, and other road users.
 Since now cars are connected to the internet, there is no need to be physically close to the car to exploit these vulnerabilities and this expands the attack surface drastically.
 In the past decade (2010 onward), nearly 79.6\% of all automotive attacks have been
 remote attacks\cite{cybersec}.
 
-\subsubsection{AMOEBA for location privacy}
+\subsection{Communication and Network}\label{subsec:v2x-communication-and-network}
+DDoS -> cite this sontakke2022impact
+Here will be presented some of the main attacks that can mine the user's privacy and security.
+The main goal is to provide a comprehensive overview of the potential threats and the
+countermeasures that can be adopted to mitigate them, focussing on remote attacks.
+After this overview, a series of objectives and some key features of the countermeasures will be presented.
+
+a list with an Objective, Key Features,
+Limitations, and Advantages will be presented for each countermeasure.
+
+\subsubsection{Location privacy}
 \begin{enumerate}
-    \item \textbf{Purpose}: Mitigates unauthorized tracking in VANETs using pseudonymization and random silent periods.
+    \item \textbf{Objective}: Mitigates unauthorized tracking in VANETs using pseudonyms and random silent periods.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item Divides road networks into observed and unobserved (mixing) zones.
         \item Vehicles in unobserved zones change directions, speeds, and pseudonyms to prevent tracking.
-        \item Uses navigation groups for anonymous access to Location-Based Services (LBS).
+        \item Use navigation groups for anonymous access to Location-Based Services (LBS).
         \item Random silent periods between pseudonym updates in Vehicle-to-Vehicle (V2V) communications to unlink identities.
     \end{enumerate}
     \item \textbf{Limitations}: The leader of the navigation group may suffer privacy loss and computational overhead due to its role in the V2I applications.
@@ -22,7 +33,7 @@ remote attacks\cite{cybersec}.
 
 \subsubsection{Cryptographic MIX-Zone (CMIX)}
 \begin{enumerate}
-    \item \textbf{Purpose}: Protects privacy through cryptographic methods in mixing zones.
+    \item \textbf{Objective}: Protects privacy through cryptographic methods in mixing zones.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item Road-Side Units (RSUs) provide vehicles with public and private keys.
@@ -36,20 +47,20 @@ remote attacks\cite{cybersec}.
 
 \subsubsection{K-Anonymity}
 \begin{enumerate}
-    \item \textbf{Purpose}: Ensures location privacy in LBS by making a vehicle’s position indistinguishable from others.
+    \item \textbf{Objective}: Ensures location privacy in LBS by making a vehicle’s position indistinguishable from others.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item \emph{K} refers to the minimum number of vehicles with similar location information.
-        \item Utilizes a trusted central server that anonymizes data via spatial and temporal cloaking.
+        \item Uses a trusted central server that anonymizes data via spatial and temporal cloaking.
         \item The anonymity level (\emph{K}) and transmission of location data are customizable by users.
         \item A node only sends location information if there are \emph{K-1} other vehicles nearby.
     \end{enumerate}
-    \item \textbf{Advantages}: Scalable and adaptable privacy protection based on the number of vehicles in proximity.
+    \item \textbf{Advantages}: Scalable and adaptable privacy protection based on the number of vehicles nearby.
 \end{enumerate}
 
 \subsubsection{Dynamic Change MAC/PHY}
 \begin{enumerate}
-    \item \textbf{Purpose}: Protects privacy by dynamically changing network-layer identifiers in VANETs.
+    \item \textbf{Objective}: Protects privacy by dynamically changing network-layer identifiers in VANETs.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item Dynamically swaps MAC/PHY addresses on Wi-Fi networks (similar to DHCP dynamic IP addressing).
@@ -61,7 +72,7 @@ remote attacks\cite{cybersec}.
 
 \subsubsection{Density-Based Location Privacy (DLP)}
 \begin{enumerate}
-    \item \textbf{Purpose}: Enhances privacy based on the density of nearby vehicles.
+    \item \textbf{Objective}: Enhances privacy based on the density of nearby vehicles.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item Vehicles change pseudonyms only when a certain number (\emph{k}) of neighboring nodes is reached.
@@ -103,10 +114,10 @@ remote attacks\cite{cybersec}.
     \label{tab:Summary of Attacks and Countermeasures. }
 \end{table}
 
-table from \cite{sheikh2019comprehensive} .
+Table from\cite{sheikh2019comprehensive}.
 
 
-This section highlights various attacks and threats that affect the security services in VANET systems, including availability, confidentiality, authentication, data integrity, and nonrepudiation.
+This section highlights various attacks and threats that affect the security services in VANET systems, including availability, confidentiality, authentication, data integrity, and non-repudiation.
 
 \subsubsection{Attack on Availability}
 \begin{enumerate}
@@ -165,5 +176,3 @@ This section highlights various attacks and threats that affect the security ser
 
 \subsection{Perception System}\label{subsec:perception-system}
 
-
-\subsection{Software and Firmware}\label{subsec:software-and-firmware}
