@@ -1,3 +1,71 @@
 \subsection{Secure Software Development Life-Cycle}\label{subsec:secure-software-development-life-cycle}
+
+Cybersecurity in autonomous vehicles (AVs) is a critical concern that requires a comprehensive and multi-faceted approach.
+One of the key strategies for enhancing AV security is the implementation of secure software development practices.
+The secure software development life cycle (SDLC) is a systematic and structured approach to developing software that prioritizes security at every stage of the development process.
+By integrating security considerations into the software development process from the outset, developers can identify and mitigate security vulnerabilities early, reducing the risk of cyberattacks and data breaches.
+To maintain the security of the software in AVs, a specific way to update the software is needed\ref{subsubsec:secure-over-the-air-ota-updates}.
+
+The major challenges in implementing a secure software development life-cycle are the
+\begin{enumerate}
+    \item \textbf{Complexity of AV Systems}: AV systems are complex and interconnected, containing a huge number of LOC that can easily introduce vulnerabilities.
+    \item \textbf{Various Technologies}: AV systems are composed of various technologies, including sensors, actuators, and communication systems, each of which presents unique security challenges in terms of code vulnerabilities and attack surfaces.
+    \item \textbf{Outsourcing}: Many AV manufacturers outsource software development to third-party vendors, introducing possible supply chain vulnerabilities.
+    \item \textbf{Open-source Code}: This can be a source of vulnerabilities if not properly managed.
+    \item \textbf{Security Decays Over Time}: As software ages, vulnerabilities may be discovered, and security patches may be required.
+\end{enumerate}
+
+To address these challenges, AV manufacturers must adopt a security-first mindset and integrate security into every phase of the software development life cycle\cite{moukahal2021towards}.
+The main phases of the secure software development life cycle include:
+
+\begin{enumerate}
+    \item \textbf{Requirement Analysis:} Consider the complexity of automotive systems that require special security consideration to manage it properly.
+    \item \textbf{Design:} Examine the system architecture thoroughly to construct proper measures limiting system weaknesses.
+    \item \textbf{Assurance Planning:} Guarantees that manufacturers are ready to take proper and prompt actions to mitigate cyber incidents, starting after the cybersecurity Design phase to ensure incident response planning abides by the system design.
+    \item \textbf{Implementation:} Involves security engineers monitoring the development of automotive components to confirm compliance with secure coding practices.
+    \item \textbf{Component Testing:} Part of the security verification phases dedicated to ensuring the integrity of individual components.
+    \item \textbf{Integration Testing:} Evaluates the interactions between integrated components to identify potential vulnerabilities.
+    \item \textbf{Resilience Verification:} Assesses the overall resilience of the system against cyber threats.
+\end{enumerate}
+
+In conclusion, the cybersecurity challenge requires a comprehensive and multi-faceted approach, and the secure software development life cycle is a key strategy for enhancing AV security.
+
 \subsection{Intrusion Detection and Prevention Systems}\label{subsec:intrusion-detection-and-prevention-systems}
+IDPS are essential components of a comprehensive cybersecurity strategy for AVs, they allow for real-time monitoring and detection of potential cyber threats, enabling rapid response and mitigation of security incidents.
+As mentioned in\cite{kim2020cybersecurity} the need of an intrusion detection system is not something new, research papers have been published since 2009, and the need for a proper system is still present.
+
+Before the emergence of connected vehicles, the primary emphasis was on detecting malicious software within the vehicle itself.
+However, the focus has now expanded to include a broader range of threats beyond just in-vehicle malware detection.
+This type of systems helps to detect and prevent unauthorized access to the vehicle's network, monitor the behavior of connected devices, and identify anomalous activities that may indicate a cyberattack.
+New approaches make large use of machine learning algorithms to detect anomalies in the vehicle's network traffic, and to identify patterns that may indicate a potential security threat\cite{nagarajan2023machine}.
+
 \subsubsection{Secure Over-the-Air (OTA) Updates}\label{subsubsec:secure-over-the-air-ota-updates}
+
+One of the key challenges in maintaining the security of AVs is the need to update software and firmware over-the-air (OTA) to address security vulnerabilities and bugs.
+Over-the-air (OTA) updates are crucial for maintaining both the security and functionality of autonomous vehicle (AV) systems\cite{durlik2022cybersecurity, ahangar2021survey}.
+Secure OTA mechanisms ensure that software updates are properly authenticated and delivered without the risk of tampering.
+
+OTA updates will facilitate rapid software distribution and bug fixes for the embedded software on electronic control units.
+However, in terms of security, OTA updates pose significant challenges due to their complexity, multiple attack surfaces, and reliance on outdated techniques.
+
+Some main functionalities of OTA updates are:
+\begin{enumerate}
+    \item \textbf{Addressing Vulnerabilities}: Rapid hot-fix security of flaws reducing the risk of exploitation.
+    \item \textbf{Enhancing Security Features}: Patching intrusion detection and authentication protocols.
+    \item \textbf{Bug Fixes}: Resolving software bugs that may cause malfunctions or security risks.
+    \item \textbf{Adapting to Emerging Threats}: Updating software to counter new and evolving cybersecurity threats.
+    \item \textbf{Minimizing Downtime}: Ensuring updates occur with minimal disruption to vehicle operation.
+    \item \textbf{Maintaining Compliance}: Keeping the vehicle up to date with regulatory security standards.
+\end{enumerate}
+
+\noindent \textbf{Best practices}:
+\begin{itemize}
+    \item \textbf{Secure Update Mechanism}: Ensures the integrity and confidentiality of the update process through authentication and encryption.
+    \item \textbf{Testing and Validation}: Rigorous testing to prevent new vulnerabilities and maintain functionality.
+    \item \textbf{User Notification and Consent}: Informing users about updates and getting consent when necessary.
+    \item \textbf{Regular Update Schedule}: Consistent schedule to ensure timely updates.
+\end{itemize}
+
+A proposal for a secure OTA software update scheme designed for cloud-based deployment is STRIDE, a resistant to malicious attacks and scalable to accommodate concurrent updates across many vehicles.
+It enables scalable, fast and secure distribution of update packages from software providers to vehicles, ensuring end-to-end security through ciphertext-policy attribute-based encryption.
+Extensive experimental evaluations show that STRIDE effectively reduces overhead without increasing network load or software update retrieval time compared to the best-performing the newest schemes\cite{sota}.

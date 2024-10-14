@@ -1,5 +1,7 @@
 In this section, the goal is to discuss potential threats about the two macro-areas covered by this report:
-communication (specifically VANETs) and the perception system.
+communication (specifically VANETs) and the perception system,
+giving a comprehensive overview of the potential threats and the
+countermeasures that can be adopted to mitigate them, focussing on remote attacks.
 Since there are two crucial aspects of the AVs, the potential threats are numerous and varied.
 The multitude of technologies involved in these two areas makes the AVs vulnerable to a wide range of attacks,
 decreasing the threshold of security.
@@ -8,164 +10,66 @@ Since now cars are connected to the internet, there is no need to be physically 
 In the past decade (2010 onward), nearly 79.6\% of all automotive attacks have been
 remote attacks\cite{cybersec}.
 
-\subsection{Communication and Network}\label{subsec:v2x-communication-and-network}
-DDoS -> cite this sontakke2022impact
-Here will be presented some of the main attacks that can mine the user's privacy and security.
-The main goal is to provide a comprehensive overview of the potential threats and the
-countermeasures that can be adopted to mitigate them, focussing on remote attacks.
-After this overview, a series of objectives and some key features of the countermeasures will be presented.
+\subsection{General}\label{subsec:communication-system}
 
-a list with an Objective, Key Features,
-Limitations, and Advantages will be presented for each countermeasure.
+This section highlights various attacks, possible tempering and threats that affect the security services in general regarding
+the CIA triad.
+It is important to mention that the CIA triad is a model designed to guide policies for information security, and in the list below some techniques can be not present.
 
-\subsubsection{Location privacy}
+\paragraph{Attack on Confidentiality}
 \begin{enumerate}
-    \item \textbf{Objective}: Mitigates unauthorized tracking in VANETs using pseudonyms and random silent periods.
-    \item \textbf{Key Features}:
-    \begin{enumerate}
-        \item Divides road networks into observed and unobserved (mixing) zones.
-        \item Vehicles in unobserved zones change directions, speeds, and pseudonyms to prevent tracking.
-        \item Use navigation groups for anonymous access to Location-Based Services (LBS).
-        \item Random silent periods between pseudonym updates in Vehicle-to-Vehicle (V2V) communications to unlink identities.
-    \end{enumerate}
-    \item \textbf{Limitations}: The leader of the navigation group may suffer privacy loss and computational overhead due to its role in the V2I applications.
+    \item \textbf{Eavesdropping}: Intercepts confidential information, such as user identity and location.
+    \item \textbf{Traffic Analysis}: Analyzes message transmission patterns to extract sensitive information.
+    \item \textbf{Man-in-the-Middle}: Intercepts and alters messages between communicating vehicles.
+    \item \textbf{Social Engineering}: Distracts drivers with unethical messages, affecting their performance.
+    \item \textbf{Sybil Attack}: Uses multiple fake identities to mislead vehicles and compromise confidentiality.
+    \item \textbf{GPS Spoofing}: Creates false GPS information, compromising location confidentiality.
 \end{enumerate}
 
-\subsubsection{Cryptographic MIX-Zone (CMIX)}
+\paragraph{Attack on Data Integrity}
 \begin{enumerate}
-    \item \textbf{Objective}: Protects privacy through cryptographic methods in mixing zones.
-    \item \textbf{Key Features}:
-    \begin{enumerate}
-        \item Road-Side Units (RSUs) provide vehicles with public and private keys.
-        \item Messages are encrypted inside mixing zones, and pseudonyms are exchanged for anonymous communication.
-        \item Uses Pseudonym Certification Authority (PCA) for cross-certification and pseudonym validation.
-        \item Hardware Security Modules (HSMs) and tamper-proof protections may be used to ensure security, though cost can be prohibitive.
-        \item Rotating certificates to avoid correlation between different locations.
-    \end{enumerate}
-    \item \textbf{Challenges}: High cost of cryptographic hardware and managing cross-certification of pseudonyms.
+    \item \textbf{Masquerading}: Uses valid credentials to broadcast false messages.
+    \item \textbf{Replay}: Repeats or delays transmissions, complicating emergency responses.
+    \item \textbf{Message Tampering}: Modifies messages to influence driving behavior.
+    \item \textbf{Illusion}: Generates misleading traffic warnings based on malicious data.
+    \item \textbf{Node Impersonation}: Uses a valid user ID to impersonate another user, compromising the integrity of communications.
+    \item \textbf{Key/Certificate Replication}: Uses duplicates to create confusion, affecting data authenticity and integrity.
 \end{enumerate}
 
-\subsubsection{K-Anonymity}
+\paragraph{Attack on Availability}
 \begin{enumerate}
-    \item \textbf{Objective}: Ensures location privacy in LBS by making a vehicle’s position indistinguishable from others.
-    \item \textbf{Key Features}:
-    \begin{enumerate}
-        \item \emph{K} refers to the minimum number of vehicles with similar location information.
-        \item Uses a trusted central server that anonymizes data via spatial and temporal cloaking.
-        \item The anonymity level (\emph{K}) and transmission of location data are customizable by users.
-        \item A node only sends location information if there are \emph{K-1} other vehicles nearby.
-    \end{enumerate}
-    \item \textbf{Advantages}: Scalable and adaptable privacy protection based on the number of vehicles nearby.
-\end{enumerate}
-
-\subsubsection{Dynamic Change MAC/PHY}
-\begin{enumerate}
-    \item \textbf{Objective}: Protects privacy by dynamically changing network-layer identifiers in VANETs.
-    \item \textbf{Key Features}:
-    \begin{enumerate}
-        \item Dynamically swaps MAC/PHY addresses on Wi-Fi networks (similar to DHCP dynamic IP addressing).
-        \item Randomization of MAC/PHY addresses prevents long-term tracking by adversaries.
-        \item Incorporates cryptographic key exchange to ensure security during the address swapping process.
-    \end{enumerate}
-    \item \textbf{Advantages}: Increases privacy by making it harder to track vehicles based on MAC/PHY addresses.
-\end{enumerate}
-
-\subsubsection{Density-Based Location Privacy (DLP)}
-\begin{enumerate}
-    \item \textbf{Objective}: Enhances privacy based on the density of nearby vehicles.
-    \item \textbf{Key Features}:
-    \begin{enumerate}
-        \item Vehicles change pseudonyms only when a certain number (\emph{k}) of neighboring nodes is reached.
-        \item Operates with pre-equipped pseudonyms that are switched dynamically.
-        \item The probability of tracking decreases as traffic density and speed variations increase.
-    \end{enumerate}
-    \item \textbf{Advantages}: Reduces location tracking probability in high-traffic areas, and improves performance compared to AMOEBA and Mix-Zone.
-    \item \textbf{Challenges}: Optimal pseudonym change thresholds need to be determined dynamically.
-\end{enumerate}
-
-\subsubsection{Cybersecurity Issues and Countermeasures}
-\begin{enumerate}
-    \item \textbf{Fake Alerts}: False traffic alerts or CAMs can disrupt road operations. \textbf{Countermeasures}: Cryptographic authentication (e.g., ECDSA) to validate message legitimacy.
-    \item \textbf{Data Theft}: Attackers can impersonate network nodes to capture sensitive packets. \textbf{Countermeasures}: Encryption and robust key management.
-    \item \textbf{Unauthorized Profiling}: Misuse of personal data for profiling. \textbf{Countermeasures}: Pseudonymization to prevent linking identities to personal data.
-    \item \textbf{Illusion Attacks}: False traffic warnings broadcast to create accidents or congestion. \textbf{Countermeasures}: Plausibility validation of messages.
-    \item \textbf{Fake Identity \& Impersonation}: Adversaries impersonate legitimate vehicles for malicious activities. \textbf{Countermeasures}: ID-based cryptographic solutions to verify vehicle authenticity.
+    \item \textbf{Denial-of-Service}: Blocks vehicle communication, disrupting operations; can occur as distributed denial of service (DDoS)\cite{sontakke2022impact}.
+    \item \textbf{Jamming}: Uses strong signals to disrupt communication channels, critical for safety applications.
+    \item \textbf{Malware}: Penetrates OBUs and RSUs, leading to system malfunctions.
+    \item \textbf{Broadcast Tampering}: Untrustworthy vehicles alter or replicate messages, hiding critical safety information.
+    \item \textbf{Black-hole}: Malicious nodes receive but do not forward packets, obstructing communication. Another version is the \textit{Gray-hole} that selectively drops only some packets.
 \end{enumerate}
 
 
-\subsubsection{potential-threats-vanets}\label{subsubsec:potentials-threats-vanets}
+To deepen the knowledge about other specific techniques for attacking and potential countermeasures, a specific evaluation
+can be found in~\cite{simulation-attacks-vanets, sheikh2019comprehensive, macena2023cybersecurity}.
 
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l|l|}
         \hline
-        \textbf{Attack} & \textbf{Compromised Services} & \textbf{Countermeasures} \\ \hline
-        DOS & Availability, authentication & Use the bit commitment and signature-based authentication technique \\ \hline
-        Jamming & Availability & Use frequency hopping technique, direct-sequence spread spectrum (DSSS) \\ \hline
-        Malware & Availability & Reliable hardware and digital signature of software \\ \hline
-        Broadcast tampering & Availability, integrity & Cryptographic primitives are enabled for prevention, but a non-repudiation mechanism may exist \\ \hline
-        Blackhole, grayhole & Availability & Reliable hardware and digital signature of software \\ \hline
-        Greedy behavior & Availability & Use intrusion detection systems (IDSs) \\ \hline
-        Spamming & Availability, confidentiality & Reliable hardware and digital signature of software \\ \hline
-        Eavesdropping & Confidentiality, integrity & Exploit physical layer security protocols \\ \hline
-        Traffic analysis & Confidentiality & Use encryption techniques \\ \hline
-        Man-in-the-middle & Authentication, confidentiality, integrity & Robust authentication technique such as digital certificates \\ \hline
+        \textbf{Attack} & \textbf{Compromised} & \textbf{Countermeasures} \\ \hline
+        DOS & A & Signature-based authentication technique \ref{subsec:intrusion-detection-and-prevention-systems} \\ \hline
+        Jamming & A & Direct-sequence spread spectrum (DSSS\cite{wang2022when}) \\ \hline
+        Malware & A & Reliable hardware and digital signature of software \\ \hline
+        Broadcast tampering & I, A & Non-repudiation mechanism may exist \\ \hline
+        Black-hole, gray-hole & A & Reliable hardware and digital signature of software \\ \hline
+        Greedy behavior & A & Use intrusion detection systems (IDSs) \\ \hline
+        Spamming & C, A & Reliable hardware and digital signature of software \\ \hline
+        Eavesdropping & C, I & Exploit physical layer security protocols \\ \hline
+        Traffic analysis & C & Encryption techniques \\ \hline
+        Man-in-the-middle & C, I, A & Robust authentication technique (E.g. CA) \\ \hline
     \end{tabular}
-    \label{tab:Summary of Attacks and Countermeasures. }
+    \label{tab:Summary of Attacks and Countermeasures}
 \end{table}
-
-Table from\cite{sheikh2019comprehensive}.
-
-
-This section highlights various attacks and threats that affect the security services in VANET systems, including availability, confidentiality, authentication, data integrity, and non-repudiation.
-
-\subsubsection{Attack on Availability}
-\begin{enumerate}
-    \item \textbf{Denial-of-Service (DoS) Attacks}: Block vehicle communication, disrupting operations; can occur as distributed denial of service (DDoS).
-    \item \textbf{Jamming Attack}: Uses strong signals to disrupt communication channels, critical for safety applications.
-    \item \textbf{Malware Attack}: Penetrates OBUs and RSUs, leading to system malfunctions.
-    \item \textbf{Broadcast Tampering Attack}: Untrustworthy vehicles alter or replicate messages, hiding critical safety information.
-    \item \textbf{Blackhole Attack}: Malicious nodes receive but do not forward packets, obstructing communication.
-    \item \textbf{Grayhole Attack}: Selectively drops packets, similar to blackhole attacks.
-    \item \textbf{Greedy Behavior Attack}: Misuses the message authentication code (MAC) protocol, causing traffic overload and collisions.
-    \item \textbf{Spamming Attack}: Injects spam messages into the system, using bandwidth inefficiently.
-\end{enumerate}
-
-\subsubsection{Attack on Confidentiality}
-\begin{enumerate}
-    \item \textbf{Eavesdropping Attack}: Intercepts confidential information, such as user identity and location.
-    \item \textbf{Traffic Analysis Attack}: Analyzes message transmission patterns to extract sensitive information.
-    \item \textbf{Man-in-the-Middle Attack}: Intercepts and alters messages between communicating vehicles.
-    \item \textbf{Social Attack}: Distracts drivers with unethical messages, affecting their performance.
-\end{enumerate}
-
-\subsubsection{Attack on Authentication}
-\begin{enumerate}
-    \item \textbf{Sybil Attack}: Uses multiple fake identities to disrupt normal operations and mislead other vehicles.
-    \item \textbf{Tunneling Attack}: Links distant parts of the network, allowing unauthorized communication.
-    \item \textbf{GPS Spoofing}: Creates false GPS information, misleading vehicles about their location.
-    \item \textbf{Node Impersonation Attack}: Uses a valid user ID to impersonate another user.
-    \item \textbf{Free-Riding Attack}: Exploits other users' authentication efforts without contributing.
-    \item \textbf{Replay Attack}: Replays valid data to create unauthorized effects.
-    \item \textbf{Key/Certificate Replication Attack}: Uses duplicates to confuse traffic authorities.
-    \item \textbf{Message Tampering}: Alters exchanged messages in V2V or V2I communication.
-    \item \textbf{Masquerading Attack}: Uses false identities to gain unauthorized access.
-\end{enumerate}
-
-\subsubsection{Attack on Data Integrity}
-\begin{enumerate}
-    \item \textbf{Masquerading Attack}: Uses valid credentials to broadcast false messages.
-    \item \textbf{Replay Attack}: Repeats or delays transmissions, complicating emergency responses.
-    \item \textbf{Message Tampering Attack}: Modifies messages to influence driving behavior.
-    \item \textbf{Illusion Attack}: Generates misleading traffic warnings based on malicious data.
-\end{enumerate}
-
-\subsubsection{Attack on Non-repudiation}
-\begin{enumerate}
-    \item \textbf{Repudiation Attack}: Denies involvement in sending or receiving messages, complicating disputes.
-\end{enumerate}
-
-
+A = Availability, AU = Authentication, C = Confidentiality, I = Integrity
+Table source\cite{sheikh2019comprehensive}.
+%//Cybersecurity in Autonomous Vehicles—Are We Ready for the Challenge?
 %//Cybersecurity and Privacy Protection in Vehicular Networks (VANETs)
 %\cite{macena2023cybersecurity}
 %// survey on VANETs sec serv.
@@ -173,6 +77,108 @@ This section highlights various attacks and threats that affect the security ser
 %//Simulating attacks on Vanets
 %\cite{simulation-attacks-vanets}
 
+\subsection{VANETs specific}\label{subsec:v2x-communication-and-network}
+
+In this section, the focus is on the communication system, specifically on the VANETs.
+In this case, some countermeasures are presented to mitigate the threats that affect the security services in VANETs, in particular the location privacy and related info.
+
+\begin{enumerate}
+    \item \textbf{Objective}: Mitigates tracking in VANETs using pseudonyms and silent periods.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item Road networks divided into observed/unobserved zones.
+        \item Vehicles in unobserved zones change pseudonyms, directions, and speeds.
+        \item Anonymous LBS access via navigation groups.
+        \item Random silent periods in V2V communications to unlink identities.
+    \end{enumerate}
+    \item \textbf{Limitations}: Navigation group leaders face privacy loss and computational overhead in V2I applications.
+\end{enumerate}
+
+\subsubsection{Cryptographic MIX-Zone (CMIX)}
+\begin{enumerate}
+    \item \textbf{Objective}: Protect privacy in mixing zones with cryptographic methods.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item RSUs provide vehicles with cryptographic keys.
+        \item Pseudonym exchange in encrypted mixing zones.
+        \item PCA handles pseudonym cross-certification.
+        \item Optional use of HSMs for enhanced security.
+    \end{enumerate}
+    \item \textbf{Challenges}: High hardware costs and managing pseudonym certification.
+\end{enumerate}
+
+\subsubsection{K-Anonymity}
+\begin{enumerate}
+    \item \textbf{Objective}: Ensures privacy by making vehicle location indistinguishable.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item Trusted server anonymizes data via cloaking.
+        \item Location shared only if \emph{K} vehicles are nearby.
+    \end{enumerate}
+    \item \textbf{Advantages}: Scalable and customizable based on vehicle density.
+\end{enumerate}
+
+\subsubsection{Dynamic Change MAC/PHY}
+\begin{enumerate}
+    \item \textbf{Objective}: Protects privacy by changing MAC/PHY addresses dynamically.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item Periodic MAC/PHY address swapping.
+        \item Cryptographic key exchange during address changes.
+    \end{enumerate}
+    \item \textbf{Advantages}: Makes vehicle tracking harder.
+\end{enumerate}
+
+\subsubsection{Density-Based Location Privacy (DLP)}
+\begin{enumerate}
+    \item \textbf{Objective}: Privacy protection based on vehicle density.
+    \item \textbf{Key Features}:
+    \begin{enumerate}
+        \item Pseudonym change occurs with \emph{k} neighboring nodes.
+        \item Improved privacy in high-traffic areas.
+    \end{enumerate}
+    \item \textbf{Challenges}: Dynamic pseudonym change thresholds.
+\end{enumerate}
+
 
 \subsection{Perception System}\label{subsec:perception-system}
 
+The perception system in AVs is responsible for collecting and processing data from various sensors to understand the vehicle's surroundings.
+The data collected by the perception system is crucial for making informed decisions and coordinating the vehicle's actuators in a safe and efficient manner.
+However, since it is composed by a multitude of sensors, the perception system is a subsystem where the attack surface is huge\ref{fig:sensors-2}.
+In this section, some main issues about the perception system will be presented and discussed, focusing on the potential threats and the countermeasures that can be adopted to mitigate them\cite{sensors}.
+
+Some AVs sensors are \textit{LiDAR}, \textit{radar}, \textit{cameras}, and \textit{ultrasonic sensors}, to perceive and interpret their surroundings accurately.
+For their nature, it is challenging preventing from common attacks like spoofing and jamming.
+Sensor spoofing involves introducing false data into the sensor systems, while jamming overwhelms the sensors with noise, disrupting their normal functioning.
+
+Through such manipulation, attackers can deceive the vehicle's control systems, causing misinterpretations of the environment.
+For example, projecting fake obstacles might cause unnecessary braking, while concealing real obstacles could lead to collisions.
+These manipulations result in erratic driving behavior.
+In cases of jamming, AVs may become \textit{careless} to their surroundings, resulting in dangerous situations due to the absence of reliable sensor input\cite{durlik2022cybersecurity}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/sensors}
+    \caption{Main sensors used in AVs from \cite{sensors}}
+    \label{fig:sensors-2}
+\end{figure}
+
+What emerges from the literature is that the perception system is a critical component of AVs, mainly every sensor can be a potential target for cyber-attacks using the techniques mentioned above.
+From LiDAR, Ultrasonic Sensor, Camera, Radar, GPS, that are the most common sensors used is AVs, to the Tire Pressure sensors are all potential targets\cite{sensors}.
+
+
+\paragraph{Countermeasures}
+
+Given the complexity of autonomous vehicle perception systems, they can easily become a target for attacks.
+The current approach acknowledges this vulnerability, which is challenging to fully eliminate.
+Instead, the focus is shifting towards recognizing the stimuli detected by these systems and determining whether they are legitimate or not.
+As highlighted in the Machine Learning/AI section\ref{subsec:artificial-intelligence-for-cybersecurity-in-avs}, machine learning algorithms—particularly those for anomaly detection—are being employed to identify and respond to irregularities in sensor data.
+Another effective countermeasure is sensor fusion, which involves cross-referencing data from multiple sensors.
+This technique helps to provide more accurate measurements and enables more stable decision-making and reactions.
+
+However, while Machine Learning offers new avenues for detecting and mitigating these attacks, it introduces a new challenge: in the event of an error, who is held accountable for the incident?
+This leads to ethical considerations, though that is not our primary focus here.
+
+A more relevant question for us arises in the context of forensic analysis: How should we proceed when investigating an attack?
+How do we detect the attack, and how can we effectively mitigate it if the anomaly was identified by a black-box algorithm?\cite{cybersecurity2022forensics}
