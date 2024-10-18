@@ -14,14 +14,14 @@ remote attacks\cite{cybersec}.
 
 This section highlights various attacks, possible tempering and threats that affect the security services in general regarding
 the CIA triad.
-It is important to mention that the CIA triad is a model designed to guide policies for information security, and in the list below some techniques can be not present.
+It is important to mention that the CIA triad is a model designed to guide policies for information security, and in the list below, some techniques cannot be present.
 
 \paragraph{Attack on Confidentiality}
 \begin{enumerate}
     \item \textbf{Eavesdropping}: Intercepts confidential information, such as user identity and location.
     \item \textbf{Traffic Analysis}: Analyzes message transmission patterns to extract sensitive information.
     \item \textbf{Man-in-the-Middle}: Intercepts and alters messages between communicating vehicles.
-    \item \textbf{Social Engineering}: Distracts drivers with unethical messages, affecting their performance.
+    \item \textbf{Social Engineering}: Distracts and exploits drivers to gain access to confidential information.
     \item \textbf{Sybil Attack}: Uses multiple fake identities to mislead vehicles and compromise confidentiality.
     \item \textbf{GPS Spoofing}: Creates false GPS information, compromising location confidentiality.
 \end{enumerate}
@@ -40,9 +40,10 @@ It is important to mention that the CIA triad is a model designed to guide polic
 \begin{enumerate}
     \item \textbf{Denial-of-Service}: Blocks vehicle communication, disrupting operations; can occur as distributed denial of service (DDoS)\cite{sontakke2022impact}.
     \item \textbf{Jamming}: Uses strong signals to disrupt communication channels, critical for safety applications.
-    \item \textbf{Malware}: Penetrates OBUs and RSUs, leading to system malfunctions.
+    \item \textbf{Malware}: Penetrates OBUs, RSUs or other system component leading to system malfunctions.
     \item \textbf{Broadcast Tampering}: Untrustworthy vehicles alter or replicate messages, hiding critical safety information.
-    \item \textbf{Black-hole}: Malicious nodes receive but do not forward packets, obstructing communication. Another version is the \textit{Gray-hole} that selectively drops only some packets.
+    \item \textbf{Black-hole}: Malicious nodes receive but do not forward packets, obstructing communication.
+    Another version is the \textit{Gray-hole} that selectively drops only some packets.
 \end{enumerate}
 
 
@@ -68,48 +69,50 @@ can be found in~\cite{simulation-attacks-vanets, sheikh2019comprehensive, macena
     \label{tab:Summary of Attacks and Countermeasures}
 \end{table}
 A = Availability, AU = Authentication, C = Confidentiality, I = Integrity
-Table source\cite{sheikh2019comprehensive}.
-%//Cybersecurity in Autonomous Vehicles—Are We Ready for the Challenge?
-%//Cybersecurity and Privacy Protection in Vehicular Networks (VANETs)
-%\cite{macena2023cybersecurity}
-%// survey on VANETs sec serv.
-%\cite{sheikh2019comprehensive}
-%//Simulating attacks on Vanets
-%\cite{simulation-attacks-vanets}
+from\cite{sheikh2019comprehensive}.
 
 \subsection{VANETs specific}\label{subsec:v2x-communication-and-network}
 
 In this section, the focus is on the communication system, specifically on the VANETs.
 In this case, some countermeasures are presented to mitigate the threats that affect the security services in VANETs, in particular the location privacy and related info.
+Some of the main countermeasures, with benefits and limitations, are presented and discussed.
+
+
+below\cite{macena2023cybersecurity}.
+
+\subsubsection{Pseudonym Change and Silent Periods}
+Dividing road networks into observed and unobserved zones allows vehicles to change pseudonyms and behavior, such as altering speeds and directions in unobserved zones.
+This, combined with random silent periods in vehicle-to-vehicle (V2V) communication, reduces the risk of tracking and identity linking.
+However, this approach can lead to privacy loss and computational strain for certain vehicles, particularly in V2I (vehicle-to-infrastructure) interactions, where more complex tasks are required.
 
 \begin{enumerate}
-    \item \textbf{Objective}: Mitigates tracking in VANETs using pseudonyms and silent periods.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item Road networks divided into observed/unobserved zones.
         \item Vehicles in unobserved zones change pseudonyms, directions, and speeds.
-        \item Anonymous LBS access via navigation groups.
         \item Random silent periods in V2V communications to unlink identities.
     \end{enumerate}
-    \item \textbf{Limitations}: Navigation group leaders face privacy loss and computational overhead in V2I applications.
+    \item \textbf{Limitations}: Navigation group leaders privacy and computational overhead in V2I applications.
 \end{enumerate}
 
 \subsubsection{Cryptographic MIX-Zone (CMIX)}
+Here, RSUs (Roadside Units) provide cryptographic keys to vehicles, enabling secure pseudonym exchanges in encrypted zones.
+This method strengthens privacy, but the high costs of the required hardware and the complexity of managing pseudonym certification represent significant hurdles, particularly when applied on a larger scale.
 \begin{enumerate}
-    \item \textbf{Objective}: Protect privacy in mixing zones with cryptographic methods.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item RSUs provide vehicles with cryptographic keys.
         \item Pseudonym exchange in encrypted mixing zones.
-        \item PCA handles pseudonym cross-certification.
-        \item Optional use of HSMs for enhanced security.
+        \item Possible pseudonym certification through authorities.
+        \item Optional use of hardware security modules (HSMs).
     \end{enumerate}
     \item \textbf{Challenges}: High hardware costs and managing pseudonym certification.
 \end{enumerate}
 
 \subsubsection{K-Anonymity}
+A trusted server anonymizes data, and location information is shared only if enough vehicles are present nearby, making individual tracking more difficult.
+This technique is scalable and can be adjusted based on vehicle density, making it well-suited for dynamic traffic conditions.
 \begin{enumerate}
-    \item \textbf{Objective}: Ensures privacy by making vehicle location indistinguishable.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item Trusted server anonymizes data via cloaking.
@@ -119,8 +122,9 @@ In this case, some countermeasures are presented to mitigate the threats that af
 \end{enumerate}
 
 \subsubsection{Dynamic Change MAC/PHY}
+Periodic swapping of these addresses complicates tracking efforts.
+Cryptographic key exchanges ensure that address changes are secure, although this approach requires careful management of the cryptographic process to maintain seamless communication.
 \begin{enumerate}
-    \item \textbf{Objective}: Protects privacy by changing MAC/PHY addresses dynamically.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item Periodic MAC/PHY address swapping.
@@ -130,8 +134,10 @@ In this case, some countermeasures are presented to mitigate the threats that af
 \end{enumerate}
 
 \subsubsection{Density-Based Location Privacy (DLP)}
+Offers protection by changing pseudonyms based on the number of surrounding vehicles.
+In high-traffic areas, this method enhances privacy, but determining the optimal conditions for triggering pseudonym changes can be a challenge,
+particularly in environments with rapidly shifting traffic densities.
 \begin{enumerate}
-    \item \textbf{Objective}: Privacy protection based on vehicle density.
     \item \textbf{Key Features}:
     \begin{enumerate}
         \item Pseudonym change occurs with \emph{k} neighboring nodes.
@@ -139,6 +145,9 @@ In this case, some countermeasures are presented to mitigate the threats that af
     \end{enumerate}
     \item \textbf{Challenges}: Dynamic pseudonym change thresholds.
 \end{enumerate}
+
+The integration of pseudonyms, cryptographic techniques, dynamic address changes, and density-based strategies offers a comprehensive framework
+for improving location privacy, however, practical implementation requires careful consideration of the associated costs and complexities\cite{macena2023cybersecurity}.
 
 
 \subsection{Perception System}\label{subsec:perception-system}
@@ -148,7 +157,7 @@ The data collected by the perception system is crucial for making informed decis
 However, since it is composed by a multitude of sensors, the perception system is a subsystem where the attack surface is huge\ref{fig:sensors-2}.
 In this section, some main issues about the perception system will be presented and discussed, focusing on the potential threats and the countermeasures that can be adopted to mitigate them\cite{sensors}.
 
-Some AVs sensors are \textit{LiDAR}, \textit{radar}, \textit{cameras}, and \textit{ultrasonic sensors}, to perceive and interpret their surroundings accurately.
+As mentioned, some sensors are \textit{LiDAR}, \textit{radar}, \textit{cameras}, and \textit{ultrasonic sensors}, to perceive and interpret their surroundings accurately.
 For their nature, it is challenging preventing from common attacks like spoofing and jamming.
 Sensor spoofing involves introducing false data into the sensor systems, while jamming overwhelms the sensors with noise, disrupting their normal functioning.
 
@@ -173,16 +182,13 @@ From LiDAR, Ultrasonic Sensor, Camera, Radar, GPS, that are the most common sens
 Given the complexity of autonomous vehicle perception systems, they can easily become a target for attacks.
 The current approach acknowledges this vulnerability, which is challenging to fully eliminate.
 Instead, the focus is shifting towards recognizing the stimuli detected by these systems and determining whether they are legitimate or not.
-As highlighted in the Machine Learning/AI section\ref{subsec:artificial-intelligence-for-cybersecurity-in-avs}, machine learning algorithms—particularly those for anomaly detection—are being employed to identify and respond to irregularities in sensor data.
-Another effective countermeasure is sensor fusion, which involves cross-referencing data from multiple sensors.
+As highlighted in the machine learning/AI section\ref{subsec:artificial-intelligence}, machine learning algorithms—particularly those for anomaly detection—are being employed to identify and respond to irregularities in sensor data.
+Another possible countermeasure is sensor fusion, which involves cross-referencing data from multiple sensors.
 This technique helps to provide more accurate measurements and enables more stable decision-making and reactions.
 
-However, while Machine Learning offers new avenues for detecting and mitigating these attacks, it introduces a new challenge: in the event of an error, who is held accountable for the incident?
-This leads to ethical considerations, though that is not our primary focus here.
-
-A more relevant question for us arises in the context of forensic analysis: How should we proceed when investigating an attack?
-How do we detect the attack, and how can we effectively mitigate it if the anomaly was identified by a black-box algorithm?\cite{cybersecurity2022forensics}
-
+However, while machine learning offers new avenues for detecting and mitigating these attacks, it introduces new challenges in terms of legal and ethical considerations.
+Since the focus is not on these aspects but in the technical ones, it is essential to consider the forensic implications
+of these algorithms\cite{durlik2022cybersecurity, cybersecurity2022forensics} and possible research for the future to eliminate these vulnerabilities.
 
 \begin{figure}[!htb]
     \centering
