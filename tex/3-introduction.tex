@@ -5,7 +5,7 @@ analyzing the attack surface, main vulnerabilities and possible countermeasures 
 Starting from a brief of history of AVs and introducing an overview of the architecture, and then focusing on the main sensors and communication technologies used in AVs.
 Every section will pay attention mostly on the cybersecurity aspects, so some other aspects can be omitted.
 Through this analysis, the review aims to respond to the research question currently in the methodology section.
-This review will not cover the ethical implications or the differences between human-driven and autonomous vehicles in terms of accidents and fatalities.
+As mentioned in the methodology\ref{sec:methodology} section, this review will not cover the ethical implications or the differences between human-driven and autonomous vehicles in terms of accidents and fatalities.
 Moreover, the review will not cover the security of other autonomous systems
 but focuses only on the on-road motor vehicles and its main parts.
 
@@ -15,14 +15,12 @@ The development of autonomous vehicles is a significant milestone in the evoluti
 It is important to start with some historical context to understand the current state of autonomous vehicles and then,
 the security implications.
 
-Vehicle automation has roots dating back to 1918\cite{pendleton2017perception},
-with General Motors showcasing the first concept of an automated vehicle in 1939 \cite{shladover2017connected} .
+Vehicle automation has roots with General Motors showcasing the first concept of an automated vehicle in 1939.
 Initial R\&D efforts were led by General Motors and the Radio Corporation of America Sarnoff Laboratory in the 1950s.
 From 1964 to 2003, various government and academic initiatives in the US, Europe,
-and Japan focused on automated buses, truck platoons, and advanced driving systems
-\cite{shladover2017connected} .
-A significant boost came from DARPA’s Grand Challenges Program in the 2000s \cite{darpa_grand_challenges_book},
-where AVs first navigated desert terrains in 2005 and urban roads by 2007 \cite{pendleton2017perception, shladover2017connected}
+and Japan focused on automated buses, truck platoons, and advanced driving systems\cite{pendleton2017perception, shladover2017connected}.
+A significant boost came from DARPA’s Grand Challenges Program in the 2000s\cite{darpa_grand_challenges_book},
+where AVs first navigated desert terrains in 2005 and urban roads by 2007\cite{pendleton2017perception, shladover2017connected}.
 
 Since then, researchers have rapidly progressed in academia and industry.
 Volvo, Tesla, Audi, BMW,
@@ -71,6 +69,8 @@ The Society of Automotive Engineers (SAE) has defined six levels of driving auto
     \item \textbf{Level 5 (Full Automation):} The vehicle can perform all aspects of the DDT under all conditions without human intervention.
 \end{enumerate}
 
+Levels 0–2 are generally classified as driver-assisted systems, while Levels 3 and 4 are considered semi-automated, and Level 5 represents full autonomy.
+
 \begin{table}[ht]
     \centering
     \begin{tabular}{|c|l|}
@@ -85,15 +85,11 @@ The Society of Automotive Engineers (SAE) has defined six levels of driving auto
     \label{tab:acronyms}
 \end{table}
 
-Levels 0–2 are generally classified as driver-assisted systems, while Levels 3 and 4 are considered semi-automated, and Level 5 represents full autonomy.
-
 \subsection{Overview of AVs Architecture}\label{subsec:overview-on-avs-architecture}
 
 This section provides a high-level overview of the autonomous vehicles (AVs) architecture and the key parts that enable their operation.
 Moreover, an alternative architecture proposed in\cite{2023survey} will be briefly discussed.
-The architecture of AVs is designed to integrate various hardware and software components that work together to perceive the environment, make decisions, and control the vehicle.
-
-\cite{architecture}
+The architecture of AVs is designed to integrate various hardware and software components that work together to perceive the environment, make decisions, and control the vehicle\cite{architecture}.
 
 \begin{figure}[!htb]
     \centering
@@ -103,12 +99,13 @@ The architecture of AVs is designed to integrate various hardware and software c
     \label{fig:architecture}
 \end{figure}
 
-The current architecture presented in\ref{fig:architecture} is composed of layers of hardware and software that interact to enable the vehicle to operate autonomously.
-In its simplest form, the architecture consists of four main layers: perception, decision and planning, control and reflexive.
+The overall architecture presented in\ref{fig:architecture} is composed of layers of hardware and software that interact to enable the vehicle to operate autonomously.
+In its simplest and first form, the architecture consists of four main layers: perception, decision and planning, control and reflexive.
 Each layer is responsible for a specific aspect of the AV's operation, from sensing the environment to executing driving maneuvers reflexively\cite{architecture}.
 
 \begin{enumerate}
-    \item \textbf{Perception}: This stage involves sensing the AV's surroundings using sensors that will be presented successively in SECTION. The information is processed by recognition modules, such as adaptive detection and recognition frameworks, control systems, lane departure warning systems, traffic sign recognition, obstacle recognition, and vehicle positioning modules.
+    \item \textbf{Perception}: This stage involves sensing the AV's surroundings using sensors.
+    Nowadays, the information is processed by recognition modules, such as adaptive detection and recognition frameworks, control systems, lane departure warning systems, traffic sign recognition, obstacle recognition, and vehicle positioning modules.
     The processed data is then sent to the decision and planning stage.
     \item \textbf{Decision and Planning}: Using the data from the perception stage, this stage plans and controls the AV's motion and behavior.
     It handles tasks like path planning, action prediction, and obstacle avoidance based on real-time maps, traffic data, user inputs, and past information.
@@ -118,26 +115,24 @@ Each layer is responsible for a specific aspect of the AV's operation, from sens
     These components are controlled by the signals from the control module to execute the AV’s movements.
 \end{enumerate}
 
-The proposed and secured architecture extends the just presented one providing four new layer: monitoring, analysis, decision-making, and visualization.
+The proposed and secured architecture extends this architecture providing four new layer: monitoring, analysis, decision-making, and visualization.
 Any services, processes, and communication are monitored by the agents and analyzed by the process controllers.
 A set of decision controllers act on the information from the process controllers.
 The decisions are archived in a black box, while the analysis, reporting, and visualization layers are accessible both within the vehicle and through an external Virtual Security Operations Center (VSOC), allowing the user to consult them as needed\cite{adu-kyere2023self-aware}.
 
 What can be easily noted is the need to monitor and analyze the data that are exchanged between the different components of the AVs.
 Also, the data that are exchanged between the vehicle and the infrastructure should be monitored and analyzed to prevent and in case recover from possible attacks.
-Some possible research directions could be the development of a secure and efficient monitoring system that can analyze the data in real-time and take action in case of attacks.
+Some possible research directions could be the development of a secure and efficient monitoring system that can analyze the data in real-time and take action in case of attacks\ref{subsec:intrusion-detection-and-prevention-systems}.
 
-\subsubsection{Communication}\label{subsubsec:communication}
-
-\paragraph{VANETs}
+\subsubsection{VANETs Communication}\label{subsubsec:vanets-communication}
 
 Communication as mentioned before is a key part of AVs.
 A Vehicular ad hoc network (VANET) is a proposed type of mobile ad hoc network (MANET) involving road vehicles.
 This type of network permits vehicles to communicate with roadside equipment, such as traffic lights, and with each other\cite{sheikh2019comprehensive}.
 For example, VANETs can be used for vehicle-to-vehicle (V2V) and Vehicle-to-Infrastructure (V2I) communications, so for external communications.
 The main purpose of such technology is to generate security on the roads, in this case security in terms of passengers and pedestrian safety.
-The main components of VANET technology are: \textit{On-board unit (OBU)}, \textit{Road-side unit (RSU)}, \textit{Trusted Authority}.
-The Trusted Authority (TA) acts as a key part in the VANET architecture,
+The main components of VANET technology are: \textit{On-board unit (OBU)}, \textit{Road-side unit (RSU)}, \textit{Trusted Authority (TA)}.
+The Trusted Authority acts as a key part in the VANET architecture,
 as it is responsible for managing the security of the network and ensuring that all vehicles are authenticated
 and authorized to communicate.
 
@@ -157,9 +152,11 @@ Or by the type of interaction:
     \item \textbf{Vehicle-to-Everything (V2X)}
 \end{enumerate}
 
+To favor the type of communications instead of the range, the following sections will be based on the type of interaction.
+
 \paragraph{Vehicle-to-Vehicle (V2V)}
 
-The V2V communication provides several advantages that can be exploited, such as the Blind Spot Detection (BSD) that warns the drivers about other vehicles of any type located out of sight.
+The V2V communication provides several advantages that can be exploited, such as the Blind Spot Detection (BSD) that warns the drivers about other vehicles of any type located out of sight,
 the Forward Collision Warning System (FCWS), automatic emergency braking (AEB) and the Lane departure warning system (LDWS)\cite{arena2019overview}.
 
 Vehicle-to-Vehicle (V2V) technology involves wireless communication between motor vehicles, aiming primarily to prevent accidents by exchanging data such as position and speed.
@@ -197,7 +194,7 @@ V2X, like V2V and V2I, aims to enhance road safety, focussing on vulnerable road
     \label{fig:communication}
 \end{figure}
 
-\paragraph{Can BUS}
+\subsubsection{Can BUS Communication}\label{subsubsec:canbus-communication}
 Internal communications are managed by the Controller Area Network (CAN) bus.
 CAN is the most common network topology used for controlling the automotive and the industrial system.
 It is a communication network that offers rapid communication among microcontroller
@@ -207,14 +204,14 @@ permit all nodes to receive the message and perform on the network message\cite{
 CAN is the standard bus interface that attackers use to inject attack messages into the
 communication network, it requires to be located near the target vehicle to perform the attack if the exploitation is only physical and not through the network; in that case, the attacker can be located anywhere in the world.
 The CAN bus is a broadcast network, meaning that all nodes on the network receive the message and require no authentication to receive the message, that is hazardous in terms of security.
-Researchers tried to evaluate some new technologies to detect the malicious code and mitigate the attacks\cite{aldhyani2022attacks} using deep learning algorithms to detect the malicious code on the CAN bus.
+Researchers tried to evaluate some new technologies to detect the malicious code and mitigate the attacks\cite{aldhyani2022attacks}\ref{subsec:artificial-intelligence} using deep learning algorithms to detect the malicious code on the CAN bus.
 The proposed systems have demonstrated effective detection of abnormal packets to safeguard the CAN bus.
 Additionally, they can be adapted to other security system designs within the complex infrastructures of autonomous vehicle networks, ensuring more secure data processing.
 
 \subsubsection{Perception}\label{subsubsec:perception}
 It is fundamental in AVs to perceive the environment and understand the context in which the vehicle is operating for obvious reasons.
 The perception system is responsible for collecting data from various sensors, such as cameras, LiDAR, radar, and ultrasonic sensors, to create a detailed representation of the vehicle's surroundings.
-In this case, it is important to consider the possible tempering that can be done on this sensor to alterate the perception of the vehicle, leading to dangerous situations\cite{kim2020cybersecurity, sec-sensors-2023, metro2020analysis, attacks-2020}.
+In this case, it is important to consider the possible tempering that can be done on this sensors to alterate the perception of the vehicle, leading to dangerous situations\cite{kim2020cybersecurity, sec-sensors-2023, metro2020analysis, attacks-2020}.
 
 Some of the main sensors used in AVs are:
 \begin{enumerate}
@@ -229,13 +226,12 @@ Some of the main sensors used in AVs are:
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/perception}
-    \caption{Main sensors used in AVs}
+    \caption{Overview}
     \label{fig:sensors}
 \end{figure}
 
-These sensors provide the critical data needed for navigation, obstacle
-detection, and decision-making processes and are essential for ensuring safety.
-A tempering of these sensors can lead to dangerous situations\cite{unknown2020connected,cybersec}.
+As understood, these sensors provide the critical data needed for navigation, obstacle
+detection, and decision-making processes and are essential for ensuring safety\cite{unknown2020connected,cybersec}.
 
 In the next sections\ref{sec:cybersecurity-threats} there will be a deep dive into the main sensors used in AVs and their vulnerabilities.
 
@@ -245,11 +241,10 @@ Before introducing new threats of new autonomous vehicle technologies, it is imp
 In the past, researchers have demonstrated various attacks on AVs, including remote hijacking, sensor spoofing, and data breaches.
 The attack surface of AVs is expanding due to the increasing complexity of these systems, which rely on a combination of hardware, software, and communication technologies\cite{cybersec}.
 This expansion is due to the aggressive attempts of manufacturers to
-make vehicles fully autonomous in a short period of time and without considering the security implications.
-This implied a lot of new technologies and new communication protocols keeping the focus always on the functionalities offered to the driver in terms of comfort.
-The security of the vehicle has been considered as a secondary aspect, leading to a lot of vulnerabilities that can be exploited by attackers.
+make vehicles fully autonomous in a short period of time and without considering the cybersecurity implications.
+Focussing always on the functionalities offered to the driver in terms of comfort, the security of the vehicle has been considered as a secondary aspect, leading to a lot of vulnerabilities that can be exploited by attackers.
 
-Some famous attacks that bring the attention to the security of AVs are:
+Some famous attacks that bring the attention to the cybersecurity of AVs are:
 \begin{enumerate}
     \item The Jeep Cherokee hack in 2015, where researchers remotely hijacked a Jeep Cherokee through its infotainment system, demonstrating the potential risks of cyber-attacks on connected vehicles\cite{miller2015remote}.
     \item The Tesla Model S hack in 2016, where researchers exploited vulnerabilities in the vehicle's software to take control of the car's brakes, door locks, and other critical systems\cite{tesla_hack}.
@@ -266,15 +261,16 @@ This section aims to provide a little insight into the social implications of au
 The introduction of autonomous vehicles (AVs) is expected to have a profound impact on society\cite{thomas2020perception},
 transforming transportation systems\cite{intelligent_transportation_2023}, urban planning\cite{impact_autonomous_vehicles_2018},
 and the economy~\cite{economic_aspects_2020}.
+Some potential pros and cons of AVs are summarized in Table~\ref{tab:table}.
 
 \begin{table}[ht]
     \centering
     \begin{tabular}{|l|l|}
         \hline
         \textbf{Pros} & \textbf{Cons} \\ \hline
-        Casualty: AVs can significantly reduce the number of accidents & Law: The definition of legal responsibilities \\ \hline
-        Productivity: Time saved & Employment: Job losses \\ \hline
-        Comfort: Interiors of AVs can be comfortable and spacious & Price: Initially high price. \\ \hline
+        Number of accidents reduced & Definition of legal responsibilities \\ \hline
+        Time saved & Job losses \\ \hline
+        Comfort & Price \\ \hline
     \end{tabular}
-    \caption{Advantages and Disadvantages of Autonomous Vehicles (AVs) from \cite{ahangar2021survey} }\label{tab:table}
+    \caption{Some pros and cons from \cite{ahangar2021survey} }\label{tab:table}
 \end{table}
