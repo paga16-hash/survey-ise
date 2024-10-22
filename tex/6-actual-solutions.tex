@@ -3,15 +3,15 @@
 Cybersecurity in autonomous vehicles (AVs) is a critical concern that requires a comprehensive and multi-faceted approach.
 One of the key strategies for enhancing AV security is the implementation of secure software development practices.
 The secure software development life cycle (SDLC) is a systematic and structured approach to developing software that prioritizes security at every stage of the development process.
-By integrating security considerations into the software development process from the outset, developers can identify and mitigate security vulnerabilities early, reducing the risk of cyberattacks and data breaches.
-To maintain the security of the software in AVs, a specific way to update the software is needed\ref{subsubsec:secure-over-the-air-ota-updates}.
+By integrating security considerations into the software development process from the outset, developers can identify and mitigate security vulnerabilities early, reducing the vulnerability time window.
+A specific way to update will be analyzed in section\ref{subsubsec:secure-over-the-air-ota-updates}.
 
-The major challenges in implementing a secure software development life-cycle are the
+The major challenges in implementing a secure software development life-cycle are:
 \begin{enumerate}
     \item \textbf{Complexity of AV Systems}: AV systems are complex and interconnected, containing a huge number of LOC that can easily introduce vulnerabilities.
     \item \textbf{Various Technologies}: AV systems are composed of various technologies, including sensors, actuators, and communication systems, each of which presents unique security challenges in terms of code vulnerabilities and attack surfaces.
     \item \textbf{Outsourcing}: Many AV manufacturers outsource software development to third-party vendors, introducing possible supply chain vulnerabilities.
-    \item \textbf{Open-source Code}: This can be a source of vulnerabilities if not properly managed.
+    \item \textbf{Open-source Code}: Can be seen as a double-edged sword, but if not properly managed, it can introduce security vulnerabilities.
     \item \textbf{Security Decays Over Time}: As software ages, vulnerabilities may be discovered, and security patches may be required.
 \end{enumerate}
 
@@ -28,7 +28,8 @@ The main phases of the secure software development life cycle include:
     \item \textbf{Resilience Verification:} Assesses the overall resilience of the system against cyber threats.
 \end{enumerate}
 
-In conclusion, the cybersecurity challenge requires a comprehensive and multi-faceted approach, and the secure software development life cycle is a key strategy for enhancing AV security.
+The cybersecurity challenge requires a comprehensive and multi-faceted approach, and the secure software development life cycle is a key strategy for enhancing AV security.
+In this case, only main challenges are presented, but there are many more that can be found in the literature\cite{moukahal2021towards} and others.
 
 \subsection{Intrusion Detection and Prevention Systems}\label{subsec:intrusion-detection-and-prevention-systems}
 IDPS are essential parts of a comprehensive cybersecurity strategy for AVs, they allow for real-time monitoring and detection of potential cyber threats, enabling rapid response and mitigation of security incidents.
@@ -41,11 +42,11 @@ New approaches make large use of machine learning algorithms to detect anomalies
 
 \subsubsection{Secure Over-the-Air (OTA) Updates}\label{subsubsec:secure-over-the-air-ota-updates}
 
-One of the key challenges in maintaining the security of AVs is the need to update software and firmware over-the-air (OTA) to address security vulnerabilities and bugs.
-Over-the-air (OTA) updates are crucial for maintaining both the security and functionality of autonomous vehicle (AV) systems\cite{durlik2022cybersecurity, ahangar2021survey}.
+One of the key challenges in maintaining the security of AVs is the need to update software and firmware over-the-air (OTA) to address security vulnerabilities and bugs when they are discovered.
+OTA updates are crucial for maintaining both the security and functionality of autonomous vehicle (AV) systems,\cite{durlik2022cybersecurity, ahangar2021survey} but the need to ensure that these updates are secure and tamper-proof is essential.
 Secure OTA mechanisms ensure that software updates are properly authenticated and delivered without the risk of tampering.
 
-OTA updates will facilitate rapid software distribution and bug fixes for the embedded software on electronic control units.
+An immediate advantage of OTA updates is the ability to quickly deploy security patches and updates to all vehicles in a fleet, reducing the risk of exploitation of known vulnerabilities.
 However, in terms of security, OTA updates pose significant challenges due to their complexity, multiple attack surfaces, and reliance on outdated techniques.
 
 Some main functionalities of OTA updates are:
