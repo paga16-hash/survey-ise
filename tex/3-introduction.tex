@@ -88,7 +88,7 @@ Levels 0–2 are generally classified as driver-assisted systems, while Levels 3
 \subsection{Overview of AVs Architecture}\label{subsec:overview-on-avs-architecture}
 
 This section provides a high-level overview of the autonomous vehicles (AVs) architecture and the key parts that enable their operation.
-Moreover, an alternative architecture proposed in\cite{2023survey} will be briefly discussed.
+Moreover, an alternative architecture proposed in\cite{ahangar2021survey} will be briefly discussed.
 The architecture of AVs is designed to integrate various hardware and software components that work together to perceive the environment, make decisions, and control the vehicle\cite{architecture}.
 
 \begin{figure}[!htb]
@@ -138,7 +138,7 @@ and authorized to communicate.
 
 Communications are crucial for Autonomous Vehicles (AVs) to interact with other vehicles, infrastructure, and the cloud.
 There are various ways to categorize communication in AVs. One approach is based on the range of communication, while another can be based on the type of communication, depending on the focus.
-For example, communication in AVs can be classified either by range or by the type of interaction, such as
+For example, communication in AVs can be classified either by range:
 \begin{enumerate}
     \item \textbf{Short-range communication}
     \item \textbf{Medium-range communication}
@@ -170,10 +170,10 @@ The SIVC can be used for short-range applications such as
 lane merging, adaptive cruise control, etc., whereas MIVC can be used for long-range communication such as traffic monitoring\cite{zheng2020cooperative}.
 
 The USDOT (Department of Transportation of the United States of America) has documented the security requirements of
-systems and in particular, the need to define security network requirements for V2V and its supporting systems\cite{dot2021v2v}.
+systems and in particular, the need to define security network requirements for V2V and its supporting systems.
 
 \paragraph{Vehicle to Infrastructure (V2I)}
-Vehicle to Infrastructure is another type of communication as a key component of the intelligent transportation system (ITS)
+Vehicle to Infrastructure is another type of communication as a key part of the intelligent transportation system (ITS)
 that enables vehicles to communicate with roadside infrastructure, such as traffic lights, signs, and road sensors.
 It represents the next evolution in Intelligent Transportation Systems (ITS)~\cite{dot2024v2i}.
 
@@ -211,9 +211,10 @@ Additionally, they can be adapted to other security system designs within the co
 \subsubsection{Perception}\label{subsubsec:perception}
 It is fundamental in AVs to perceive the environment and understand the context in which the vehicle is operating for obvious reasons.
 The perception system is responsible for collecting data from various sensors, such as cameras, LiDAR, radar, and ultrasonic sensors, to create a detailed representation of the vehicle's surroundings.
-In this case, it is important to consider the possible tempering that can be done on this sensors to alterate the perception of the vehicle, leading to dangerous situations\cite{kim2020cybersecurity, sec-sensors-2023, metro2020analysis, attacks-2020}.
+In this case, it is important to consider the possible tempering that can be done on these sensors to alterate the perception of the vehicle, leading to dangerous situations\cite{kim2020cybersecurity, sec-sensors-2023, metro2020analysis, sensors}.
 
-Some of the main sensors used in AVs are:
+\paragraph{Main sensors}
+
 \begin{enumerate}
     \item \textbf{Cameras}: Cameras are used to capture visual data, such as images and videos, of the vehicle's surroundings.
     \item \textbf{LiDAR (Light Detection and Ranging)}: LiDAR sensors use laser light to measure distances and create detailed 3D maps of the environment.
