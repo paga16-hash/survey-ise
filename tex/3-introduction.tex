@@ -1,13 +1,7 @@
-The focus is on the security aspects of autonomous on-roar motor vehicles,
+The focus is on the security aspects of autonomous on-road motor vehicles,
 in particular the cybersecurity threats, standards, and industry practices used to secure these systems.
-The focus will be on the current state of the art of the communication main technologies and sensors,
-analyzing the attack surface, main vulnerabilities and possible countermeasures to take.
-Starting from a brief of history of AVs and introducing an overview of the architecture, and then focusing on the main sensors and communication technologies used in AVs.
-Every section will pay attention mostly on the cybersecurity aspects, so some other aspects can be omitted.
-Through this analysis, the review aims to respond to the research question currently in the methodology section.
-As mentioned in the methodology\ref{sec:methodology} section, this review will not cover the ethical implications or the differences between human-driven and autonomous vehicles in terms of accidents and fatalities.
-Moreover, the review will not cover the security of other autonomous systems
-but focuses only on the on-road motor vehicles and its main parts.
+The focus will be on the current state of the VANETs communication main technologies and sensors of the perception systems,
+analyzing the attack surface, main vulnerabilities and possible mitigations.
 
 \subsection{Historical roots}\label{subsec:historical-roots}
 
@@ -20,7 +14,7 @@ Initial R\&D efforts were led by General Motors and the Radio Corporation of Ame
 From 1964 to 2003, various government and academic initiatives in the US, Europe,
 and Japan focused on automated buses, truck platoons, and advanced driving systems\cite{pendleton2017perception, shladover2017connected}.
 A significant boost came from DARPA’s Grand Challenges Program in the 2000s\cite{darpa_grand_challenges_book},
-where AVs first navigated desert terrains in 2005 and urban roads by 2007\cite{pendleton2017perception, shladover2017connected}.
+where AVs first navigated desert terrains in 2005 and urban roads in 2007\cite{pendleton2017perception, shladover2017connected}.
 
 Since then, researchers have rapidly progressed in academia and industry.
 Volvo, Tesla, Audi, BMW,
@@ -37,21 +31,20 @@ Mercedes-Benz and Nissan are some of the major car manufacturers that have inves
 \subsection{Autonomous Vehicles}\label{subsec:autonomous-vehicles}
 
 The introduction on the market of autonomous vehicle brings to a revolutionary change in the automotive sector.
-Many sectors can be influenced by the introduction of these vehicles, obviously not only the automotive one but also the legal and the urban planning are only examples of the sectors that can be influenced by the introduction of these vehicles.
-This type of vehicle brings us to a new era of mobility, where transportation systems become intelligent and connected.
+It is important to understand the impact that these vehicles can have on the society and the economy, influencing not only the automotive sector.
+This type of vehicle can bring us to a new era of mobility, where transportation systems become intelligent, keeping in mind that connected components can be dangerous if not specially designed or well maintained\cite{schneier2014iot}
 
 This major challenge, as often happens during times of innovation, has brought both advantages and drawbacks in terms of security.
-By this, I mean that the real driving force behind this innovation has been the convenience and socially beneficial aspects that have led to the rapid growth of the sector.
+What is intended is that the real driving force behind this innovation has been the convenience and socially beneficial aspects that have led to the rapid evolution of the sector.
 However, as is often the case in such situations, some fundamental details get overlooked—it's a natural consequence.
-In this case, the concept of cybersecurity by design has been neglected \cite{sec-by-design}, and, much like the early days of the web, efforts are now being made to address it.
+In this instance, the principle of cybersecurity by design was overlooked\cite{sec-by-design}, and similar to the early development of the web, efforts are now underway to rectify this.
 
-Also in terms of communication, a lot of innovations have been made because of the introduction of these vehicles.
-To improve functionalities, infotainment, safety, comfort and a lot of other aspects, vehicles require a lot of communication between them and the infrastructure.
-The shift from isolated and static systems to dynamic and interconnected systems increases the complexity of security issues, particularly in terms of adaptability, dynamism, and self-awareness\cite{connected_vehicles_security_2023, bouchouia2023survey}.
+A lot of innovations also in terms of communication have been made since the introduction of these vehicles.
+To improve functionalities, infotainment, safety, comfort and a lot of other aspects, vehicles require a lot of communication between them and the infrastructure like manufacturers backends or smart cities' services.
+The shift from isolated and static systems to dynamic and interconnected systems increases the attack surfaces, particularly in terms of adaptability, dynamism, and awareness\cite{connected_vehicles_security_2023, bouchouia2023survey}.
 
 For instance, vehicles relying on open software protocols and connecting with in-vehicle electric infrastructures play a vital role in strengthening their security framework.
-With the integration of advanced sensor platforms, these vehicles essentially evolve into highly sophisticated set of technologies influencing each other expanding the attack surface\cite{sec-by-design}.
-
+With the need and integration of complex systems like the perception one, these vehicles essentially evolve into a highly sophisticated set of technologies influencing each other\cite{sec-by-design}.
 
 \subsubsection{Levels of Automation}\label{subsubsec:levels-of-automation}
 The level of driving automation is determined by the specific roles assigned to both the driving automation system feature and the human user in performing the dynamic driving task (DDT) and DDT fallback\cite{sae_j3016_2021}.
@@ -61,8 +54,8 @@ The Society of Automotive Engineers (SAE) has defined six levels of driving auto
 
 \begin{enumerate}
     \item \textbf{Level 0 (No Automation):} The human driver is responsible for all aspects of the dynamic driving task.
-    \item \textbf{Level 1 (Driver Assistance):} The vehicle assists the driver with specific tasks, such as steering or acceleration.
-    \item \textbf{Level 2 (Partial Automation):} The vehicle can control both steering and acceleration/deceleration simultaneously under certain conditions, but the driver must remain engaged and monitor the environment.
+    \item \textbf{Level 1 (Driver Assistance):} The vehicle helps the driver with specific tasks, such as steering or acceleration (e.g.\ lane keeping assist, adaptive cruise control).
+    \item \textbf{Level 2 (Partial Automation):} The vehicle can control both steering and acceleration/deceleration simultaneously under certain conditions, but the driver must remain engaged and monitor the environment (e.g. combined LKA and ADC in traffic conditions).
     \item \textbf{Level 3 (Conditional Automation):} The vehicle can perform all aspects of the DDT under certain conditions like in traffic jams or highway driving, but the driver must be ready to take over when prompted.
     \item \textbf{Level 4 (High Automation):} The user (become passenger) does not need to supervise the Automated driving system (ADS) or be receptive to a request to intervene while the
     ADS is engaged, restricted to some conditions (e.g., Google's Self-Driving Car\cite{teoh2017rage}).
@@ -105,8 +98,9 @@ Each layer is responsible for a specific aspect of the AV's operation, from sens
 
 \begin{enumerate}
     \item \textbf{Perception}: This stage involves sensing the AV's surroundings using sensors.
-    Nowadays, the information is processed by recognition modules, such as adaptive detection and recognition frameworks, control systems, lane departure warning systems, traffic sign recognition, obstacle recognition, and vehicle positioning modules.
+    As expected, data processing is a fundamental step to exploit the correct information by other modules, such as adaptive detection and recognition frameworks, control systems, lane departure warning systems, traffic sign recognition, obstacle recognition, and vehicle positioning modules.
     The processed data is then sent to the decision and planning stage.
+    It is important to note that performance in processing the data is fundamentals.
     \item \textbf{Decision and Planning}: Using the data from the perception stage, this stage plans and controls the AV's motion and behavior.
     It handles tasks like path planning, action prediction, and obstacle avoidance based on real-time maps, traffic data, user inputs, and past information.
     It may also include a data log module for error tracking and future reference.
@@ -123,118 +117,6 @@ The decisions are archived in a black box, while the analysis, reporting, and vi
 What can be easily noted is the need to monitor and analyze the data that are exchanged between the different components of the AVs.
 Also, the data that are exchanged between the vehicle and the infrastructure should be monitored and analyzed to prevent and in case recover from possible attacks.
 Some possible research directions could be the development of a secure and efficient monitoring system that can analyze the data in real-time and take action in case of attacks\ref{subsec:intrusion-detection-and-prevention-systems}.
-
-\subsubsection{VANETs Communication}\label{subsubsec:vanets-communication}
-
-Communication as mentioned before is a key part of AVs.
-A Vehicular ad hoc network (VANET) is a proposed type of mobile ad hoc network (MANET) involving road vehicles.
-This type of network permits vehicles to communicate with roadside equipment, such as traffic lights, and with each other\cite{sheikh2019comprehensive}.
-For example, VANETs can be used for vehicle-to-vehicle (V2V) and Vehicle-to-Infrastructure (V2I) communications, so for external communications.
-The main purpose of such technology is to generate security on the roads, in this case security in terms of passengers and pedestrian safety.
-The main components of VANET technology are: \textit{On-board unit (OBU)}, \textit{Road-side unit (RSU)}, \textit{Trusted Authority (TA)}.
-The Trusted Authority acts as a key part in the VANET architecture,
-as it is responsible for managing the security of the network and ensuring that all vehicles are authenticated
-and authorized to communicate.
-
-Communications are crucial for Autonomous Vehicles (AVs) to interact with other vehicles, infrastructure, and the cloud.
-There are various ways to categorize communication in AVs. One approach is based on the range of communication, while another can be based on the type of communication, depending on the focus.
-For example, communication in AVs can be classified either by range:
-\begin{enumerate}
-    \item \textbf{Short-range communication}
-    \item \textbf{Medium-range communication}
-    \item \textbf{Long-range communication}
-\end{enumerate}
-
-Or by the type of interaction:
-\begin{enumerate}
-    \item \textbf{Vehicle-to-Vehicle (V2V)}
-    \item \textbf{Vehicle-to-Infrastructure (V2I)}
-    \item \textbf{Vehicle-to-Everything (V2X)}
-\end{enumerate}
-
-To favor the type of communications instead of the range, the following sections will be based on the type of interaction.
-
-\paragraph{Vehicle-to-Vehicle (V2V)}
-
-The V2V communication provides several advantages that can be exploited, such as the Blind Spot Detection (BSD) that warns the drivers about other vehicles of any type located out of sight,
-the Forward Collision Warning System (FCWS), automatic emergency braking (AEB) and the Lane departure warning system (LDWS)\cite{arena2019overview}.
-
-Vehicle-to-Vehicle (V2V) technology involves wireless communication between motor vehicles, aiming primarily to prevent accidents by exchanging data such as position and speed.
-This communication happens within an ad-hoc mesh network, which can either be fully connected or partially connected.
-In both cases, messages can be relayed directly or through multiple paths, ensuring robust communication even if some nodes fail.
-While wired mesh networks were once expensive and challenging to implement, wireless technologies, such as WPANs, have made them more feasible today\cite{arena2019overview}.
-
-Depending upon the number of hops used for inter-vehicle communication, they are classified as single-hop (SIVC) or
-Multi-hop (MIVC) systems.
-The SIVC can be used for short-range applications such as
-lane merging, adaptive cruise control, etc., whereas MIVC can be used for long-range communication such as traffic monitoring\cite{zheng2020cooperative}.
-
-The USDOT (Department of Transportation of the United States of America) has documented the security requirements of
-systems and in particular, the need to define security network requirements for V2V and its supporting systems.
-
-\paragraph{Vehicle to Infrastructure (V2I)}
-Vehicle to Infrastructure is another type of communication as a key part of the intelligent transportation system (ITS)
-that enables vehicles to communicate with roadside infrastructure, such as traffic lights, signs, and road sensors.
-It represents the next evolution in Intelligent Transportation Systems (ITS)~\cite{dot2024v2i}.
-
-State and local agencies are expected to install V2I systems either alongside or integrated with existing ITS equipment.
-As a result, many V2I deployments could be eligible for similar federal-aid programs as ITS,
-provided the deploying agency meets certain requirements\cite{dot2024v2i}.
-
-\paragraph{Vehicle to Everything (V2X)}
-
-Vehicle-to-Everything (V2X) is a general communication model that generalizes Vehicle-to-Vehicle (V2V) and Vehicle-to-Infrastructure (V2I) systems,
-incorporating interactions between vehicles and other entities, such as pedestrians (V2P)~\cite{vehicle-to-pedestrian}, roadside equipment (V2R)~\cite{vehicle-to-roadside}, and devices (V2D).
-V2X, like V2V and V2I, aims to enhance road safety, focussing on vulnerable road users.
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.7\linewidth]{figures/communication}
-    \caption{VANETs}
-    \label{fig:communication}
-\end{figure}
-
-\subsubsection{Can BUS Communication}\label{subsubsec:canbus-communication}
-Internal communications are managed by the Controller Area Network (CAN) bus.
-CAN is the most common network topology used for controlling the automotive and the industrial system.
-It is a communication network that offers rapid communication among microcontroller
-devices.
-CAN employ interconnected nodes to send a message-based protocol designed to
-permit all nodes to receive the message and perform on the network message\cite{canbus}.
-CAN is the standard bus interface that attackers use to inject attack messages into the
-communication network, it requires to be located near the target vehicle to perform the attack if the exploitation is only physical and not through the network; in that case, the attacker can be located anywhere in the world.
-The CAN bus is a broadcast network, meaning that all nodes on the network receive the message and require no authentication to receive the message, that is hazardous in terms of security.
-Researchers tried to evaluate some new technologies to detect the malicious code and mitigate the attacks\cite{aldhyani2022attacks}\ref{subsec:artificial-intelligence} using deep learning algorithms to detect the malicious code on the CAN bus.
-The proposed systems have demonstrated effective detection of abnormal packets to safeguard the CAN bus.
-Additionally, they can be adapted to other security system designs within the complex infrastructures of autonomous vehicle networks, ensuring more secure data processing.
-
-\subsubsection{Perception}\label{subsubsec:perception}
-It is fundamental in AVs to perceive the environment and understand the context in which the vehicle is operating for obvious reasons.
-The perception system is responsible for collecting data from various sensors, such as cameras, LiDAR, radar, and ultrasonic sensors, to create a detailed representation of the vehicle's surroundings.
-In this case, it is important to consider the possible tempering that can be done on these sensors to alterate the perception of the vehicle, leading to dangerous situations\cite{kim2020cybersecurity, sec-sensors-2023, metro2020analysis, sensors}.
-
-\paragraph{Main sensors}
-
-\begin{enumerate}
-    \item \textbf{Cameras}: Cameras are used to capture visual data, such as images and videos, of the vehicle's surroundings.
-    \item \textbf{LiDAR (Light Detection and Ranging)}: LiDAR sensors use laser light to measure distances and create detailed 3D maps of the environment.
-    \item \textbf{Radar (Radio Detection and Ranging)}: Radar sensors use radio waves to detect objects and measure their distance, speed, and direction.
-    \item \textbf{Ultrasonic Sensors}: Ultrasonic sensors use sound waves to detect objects and measure their distance.
-    \item \textbf{GPS (Global Positioning System)}: GPS sensors use satellite signals to determine the vehicle's location and navigate to a destination.
-    \item \textbf{IMU (Inertial Measurement Unit)}: IMU sensors measure the vehicle's acceleration, orientation, and angular velocity.
-\end{enumerate}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.7\linewidth]{figures/perception}
-    \caption{Overview}
-    \label{fig:sensors}
-\end{figure}
-
-As understood, these sensors provide the critical data needed for navigation, obstacle
-detection, and decision-making processes and are essential for ensuring safety\cite{unknown2020connected,cybersec}.
-
-In the next sections\ref{sec:cybersecurity-threats} there will be a deep dive into the main sensors used in AVs and their vulnerabilities.
 
 \subsection{Cyber-insecurity consequences}\label{subsec:cyber-insecurity}
 
