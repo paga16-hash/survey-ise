@@ -2,10 +2,13 @@ In this section, the goal is to discuss potential threats about the two macro-ar
 communication (specifically VANETs) and the perception system,
 giving a comprehensive overview of the potential threats and the
 countermeasures that can be adopted to mitigate them, focussing on remote attacks.
-Since there are two crucial aspects of the AVs, the potential threats are numerous and varied.
 The multitude of technologies involved in these two areas makes the AVs vulnerable to a wide range of attacks,
 decreasing the threshold of security.
-Attackers can exploit these vulnerabilities to compromise the safety and functionality of AVs, posing significant risks to passengers, pedestrians, and other road users.
+With the threshold, it is meant the acceptable level of security that is needed to protect the system from attacks.
+If not only the safety of the system but also the safety of other potential road users is taken into consideration,
+the threshold must be extremely high.
+Attackers can exploit vulnerabilities to compromise the safety and functionality of AVs,
+posing significant risks to passengers, pedestrians, and other road users.
 Since now cars are connected to the internet, there is no need to be physically close to the car to exploit these vulnerabilities and this expands the attack surface drastically.
 In the past decade (2010 onward), nearly 79.6\% of all automotive attacks have been
 remote attacks\cite{cybersec}.
@@ -71,16 +74,16 @@ can be found in~\cite{simulation-attacks-vanets, sheikh2019comprehensive, macena
 A = Availability, AU = Authentication, C = Confidentiality, I = Integrity
 from\cite{sheikh2019comprehensive}.
 
-\subsection{VANETs specific}\label{subsec:v2x-communication-and-network}
+\subsection{VANETs}\label{subsec:v2x-communication-and-network}
 
 In this section, the focus is on the communication system, specifically on the VANETs.
-In this case, some countermeasures are presented to mitigate the threats that affect the security services in VANETs, in particular the location privacy and related info.
+Some countermeasures are presented to mitigate the threats that affect the security services in VANETs, in particular the location privacy and related info.
 Some of the main countermeasures, with benefits and limitations, are presented and discussed.
 
 \subsubsection{Pseudonym Change and Silent Periods}
-Dividing road networks into observed and unobserved zones allows vehicles to change pseudonyms and behavior, such as altering speeds and directions in unobserved zones.
+Dividing road networks into observed and unobserved zones allow vehicles to change pseudonyms and behavior, such as altering speeds and directions in unobserved zones.
 This, combined with random silent periods in vehicle-to-vehicle (V2V) communication, reduces the risk of tracking and identity linking.
-However, this approach can lead to privacy loss and computational strain for certain vehicles, particularly in V2I (vehicle-to-infrastructure) interactions, where more complex tasks are required.
+However, this technique can lead to privacy loss and computational strain for certain vehicles, particularly in V2I (vehicle-to-infrastructure) interactions, where more complex tasks are required.
 
 \begin{enumerate}
     \item \textbf{Key Features}:
@@ -118,7 +121,7 @@ This technique is scalable and can be adjusted based on vehicle density, making 
     \item \textbf{Advantages}: Scalable and customizable based on vehicle density.
 \end{enumerate}
 
-\subsubsection{Dynamic Change MAC/PHY}
+\subsubsection{Dynamically Changing MAC/PHY}
 Periodic swapping of these addresses complicates tracking efforts.
 Cryptographic key exchanges ensure that address changes are secure, although this approach requires careful management of the cryptographic process to maintain seamless communication.
 \begin{enumerate}
@@ -159,7 +162,7 @@ For their nature, it is challenging preventing from common attacks like spoofing
 Sensor spoofing involves introducing false data into the sensor systems, while jamming overwhelms the sensors with noise, disrupting their normal functioning.
 
 Through such manipulation, attackers can deceive the vehicle's control systems, causing misinterpretations of the environment.
-For example, projecting fake obstacles might cause unnecessary braking, while concealing real obstacles could lead to collisions.
+For example, projecting fake obstacles might cause unnecessary breaking, while concealing real obstacles could lead to collisions.
 These manipulations result in erratic driving behavior.
 In cases of jamming, AVs may become \textit{careless} to their surroundings, resulting in dangerous situations due to the absence of reliable sensor input\cite{durlik2022cybersecurity}.
 
