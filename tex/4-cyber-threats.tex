@@ -11,7 +11,7 @@ Attackers can exploit vulnerabilities to compromise the safety and functionality
 posing significant risks to passengers, pedestrians, and other road users.
 Since now cars are connected to the internet, there is no need to be physically close to the car to exploit these vulnerabilities and this expands the attack surface drastically.
 In the past decade (2010 onward), nearly 79.6\% of all automotive attacks have been
-remote attacks\cite{cybersec}.
+remote attacks~\cite{cybersec}.
 
 \subsection{General}\label{subsec:communication-system}
 
@@ -41,7 +41,7 @@ It is important to mention that the CIA triad is a model designed to guide polic
 
 \paragraph{Attack on Availability}
 \begin{enumerate}
-    \item \textbf{Denial-of-Service}: Blocks vehicle communication, disrupting operations; can occur as distributed denial of service (DDoS)\cite{sontakke2022impact}.
+    \item \textbf{Denial-of-Service}: Blocks vehicle communication, disrupting operations; can occur as distributed denial of service (DDoS)~\cite{sontakke2022impact}.
     \item \textbf{Jamming}: Uses strong signals to disrupt communication channels, critical for safety applications.
     \item \textbf{Malware}: Penetrates OBUs, RSUs or other system component leading to system malfunctions.
     \item \textbf{Broadcast Tampering}: Untrustworthy vehicles alter or replicate messages, hiding critical safety information.
@@ -58,8 +58,8 @@ can be found in~\cite{simulation-attacks-vanets, sheikh2019comprehensive, macena
     \begin{tabular}{|l|l|l|}
         \hline
         \textbf{Attack} & \textbf{Compromised} & \textbf{Countermeasures} \\ \hline
-        DOS & A & Signature-based authentication technique \ref{subsec:intrusion-detection-and-prevention-systems} \\ \hline
-        Jamming & A & Direct-sequence spread spectrum (DSSS\cite{wang2022when}) \\ \hline
+        DOS & A & Signature-based authentication technique~\ref{subsec:intrusion-detection-and-prevention-systems} \\ \hline
+        Jamming & A & Direct-sequence spread spectrum (DSSS~\cite{wang2022when}) \\ \hline
         Malware & A & Reliable hardware and digital signature of software \\ \hline
         Broadcast tampering & I, A & Non-repudiation mechanism may exist \\ \hline
         Black-hole, gray-hole & A & Reliable hardware and digital signature of software \\ \hline
@@ -72,7 +72,7 @@ can be found in~\cite{simulation-attacks-vanets, sheikh2019comprehensive, macena
     \label{tab:Summary of Attacks and Countermeasures}
 \end{table}
 A = Availability, AU = Authentication, C = Confidentiality, I = Integrity
-from\cite{sheikh2019comprehensive}.
+from~\cite{sheikh2019comprehensive}.
 
 \subsection{VANETs}\label{subsec:v2x-communication-and-network}
 
@@ -147,15 +147,15 @@ particularly in environments with rapidly shifting traffic densities.
 \end{enumerate}
 
 The integration of pseudonyms, cryptographic techniques, dynamic address changes, and density-based strategies offers a comprehensive framework
-for improving location privacy, however, practical implementation requires careful consideration of the associated costs and complexities\cite{macena2023cybersecurity}.
+for improving location privacy, however, practical implementation requires careful consideration of the associated costs and complexities~\cite{macena2023cybersecurity}.
 
 
 \subsection{Perception System}\label{subsec:perception-system}
 
 The perception system in AVs is responsible for collecting and processing data from various sensors to understand the vehicle's surroundings.
 The data collected by the perception system is crucial for making informed decisions and coordinating the vehicle's actuators in a safe and efficient manner.
-However, since it is composed by a multitude of sensors, the perception system is a subsystem where the attack surface is huge\ref{fig:sensors-2}.
-In this section, some main issues about the perception system will be presented and discussed, focusing on the potential threats and the countermeasures that can be adopted to mitigate them\cite{sensors}.
+However, since it is composed by a multitude of sensors, the perception system is a subsystem where the attack surface is huge~\ref{fig:sensors-2}.
+In this section, some main issues about the perception system will be presented and discussed, focusing on the potential threats and the countermeasures that can be adopted to mitigate them~\cite{sensors}.
 
 As mentioned, some sensors are \textit{LiDAR}, \textit{radar}, \textit{cameras}, and \textit{ultrasonic sensors}, to perceive and interpret their surroundings accurately.
 For their nature, it is challenging preventing from common attacks like spoofing and jamming.
@@ -164,17 +164,17 @@ Sensor spoofing involves introducing false data into the sensor systems, while j
 Through such manipulation, attackers can deceive the vehicle's control systems, causing misinterpretations of the environment.
 For example, projecting fake obstacles might cause unnecessary breaking, while concealing real obstacles could lead to collisions.
 These manipulations result in erratic driving behavior.
-In cases of jamming, AVs may become \textit{careless} to their surroundings, resulting in dangerous situations due to the absence of reliable sensor input\cite{durlik2022cybersecurity}.
+In cases of jamming, AVs may become \textit{careless} to their surroundings, resulting in dangerous situations due to the absence of reliable sensor input~\cite{durlik2022cybersecurity}.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/sensors}
-    \caption{Main sensors used in AVs from \cite{sensors}}
+    \caption{Main sensors used in AVs from~\cite{sensors}}
     \label{fig:sensors-2}
 \end{figure}
 
 What emerges from the literature is that the perception system is a critical component of AVs, mainly every sensor can be a potential target for cyber-attacks using the techniques mentioned above.
-From LiDAR, Ultrasonic Sensor, Camera, Radar, GPS, that are the most common sensors used is AVs, to the Tire Pressure sensors are all potential targets\cite{sensors}.
+From LiDAR, Ultrasonic Sensor, Camera, Radar, GPS, that are the most common sensors used is AVs, to the Tire Pressure sensors are all potential targets~\cite{sensors}.
 
 
 \paragraph{Countermeasures}
@@ -182,17 +182,17 @@ From LiDAR, Ultrasonic Sensor, Camera, Radar, GPS, that are the most common sens
 Given the complexity of autonomous vehicle perception systems, they can easily become a target for attacks.
 The current approach acknowledges this vulnerability, which is challenging to fully eliminate.
 Instead, the focus is shifting towards recognizing the stimuli detected by these systems and determining whether they are legitimate or not.
-As highlighted in the machine learning/AI section\ref{subsec:artificial-intelligence}, machine learning algorithms—particularly those for anomaly detection—are being employed to identify and respond to irregularities in sensor data.
+As highlighted in the machine learning/AI section~\ref{subsec:artificial-intelligence}, machine learning algorithms—particularly those for anomaly detection—are being employed to identify and respond to irregularities in sensor data.
 Another possible countermeasure is sensor fusion, which involves cross-referencing data from multiple sensors.
 This technique helps to provide more accurate measurements and enables more stable decision-making and reactions.
 
 However, while machine learning offers new avenues for detecting and mitigating these attacks, it introduces new challenges in terms of legal and ethical considerations.
 Since the focus is not on these aspects but in the technical ones, it is essential to consider the forensic implications
-of these algorithms\cite{durlik2022cybersecurity, cybersecurity2022forensics} and possible research for the future to eliminate these vulnerabilities.
+of these algorithms~\cite{durlik2022cybersecurity, cybersecurity2022forensics} and possible research for the future to eliminate these vulnerabilities.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/vectors}
-    \caption{Main attack vectors from \cite{bendiab2023autonomous}}
+    \caption{Main attack vectors from~\cite{bendiab2023autonomous}}
     \label{fig:attack-vectors}
 \end{figure}

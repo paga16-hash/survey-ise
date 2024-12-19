@@ -12,19 +12,19 @@ the security implications.
 Vehicle automation has roots with General Motors showcasing the first concept of an automated vehicle in 1939.
 Initial R\&D efforts were led by General Motors and the Radio Corporation of America Sarnoff Laboratory in the 1950s.
 From 1964 to 2003, various government and academic initiatives in the US, Europe,
-and Japan focused on automated buses, truck platoons, and advanced driving systems\cite{pendleton2017perception, shladover2017connected}.
-A significant boost came from DARPA’s Grand Challenges Program in the 2000s\cite{darpa_grand_challenges_book},
-where AVs first navigated desert terrains in 2005 and urban roads in 2007\cite{pendleton2017perception, shladover2017connected}.
+and Japan focused on automated buses, truck platoons, and advanced driving systems~\cite{pendleton2017perception, shladover2017connected}.
+A significant boost came from DARPA’s Grand Challenges Program in the 2000s~\cite{darpa_grand_challenges_book},
+where AVs first navigated desert terrains in 2005 and urban roads in 2007~\cite{pendleton2017perception, shladover2017connected}.
 
 Since then, researchers have rapidly progressed in academia and industry.
 Volvo, Tesla, Audi, BMW,
-Mercedes-Benz and Nissan are some of the major car manufacturers that have invested in AV technology\cite{faisal2019understanding}.
+Mercedes-Benz and Nissan are some of the major car manufacturers that have invested in AV technology~\cite{faisal2019understanding}.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/history}
     \caption{Historical timeline of autonomous vehicles.}
-    \footnotesize{From \cite{ahangar2021survey} }
+    \footnotesize{From~\cite{ahangar2021survey} }
     \label{fig:history}
 \end{figure}
 
@@ -32,25 +32,25 @@ Mercedes-Benz and Nissan are some of the major car manufacturers that have inves
 
 The introduction on the market of autonomous vehicle brings to a revolutionary change in the automotive sector.
 It is important to understand the impact that these vehicles can have on the society and the economy, influencing not only the automotive sector.
-This type of vehicle can bring us to a new era of mobility, where transportation systems become intelligent, keeping in mind that connected components can be dangerous if not specially designed or well maintained\cite{schneier2014iot}
+This type of vehicle can bring us to a new era of mobility, where transportation systems become intelligent, keeping in mind that connected components can be dangerous if not specially designed or well maintained~\cite{schneier2014iot}
 
 This major challenge, as often happens during times of innovation, has brought both advantages and drawbacks in terms of security.
 What is intended is that the real driving force behind this innovation has been the convenience and socially beneficial aspects that have led to the rapid evolution of the sector.
 However, as is often the case in such situations, some fundamental details get overlooked—it's a natural consequence.
-In this instance, the principle of cybersecurity by design was overlooked\cite{sec-by-design}, and similar to the early development of the web, efforts are now underway to rectify this.
+In this instance, the principle of cybersecurity by design was overlooked~\cite{sec-by-design}, and similar to the early development of the web, efforts are now underway to rectify this.
 
 A lot of innovations also in terms of communication have been made since the introduction of these vehicles.
 To improve functionalities, infotainment, safety, comfort and a lot of other aspects, vehicles require a lot of communication between them and the infrastructure like manufacturers backends or smart cities' services.
-The shift from isolated and static systems to dynamic and interconnected systems increases the attack surfaces, particularly in terms of adaptability, dynamism, and awareness\cite{connected_vehicles_security_2023, bouchouia2023survey}.
+The shift from isolated and static systems to dynamic and interconnected systems increases the attack surfaces, particularly in terms of adaptability, dynamism, and awareness~\cite{connected_vehicles_security_2023, bouchouia2023survey}.
 
 For instance, vehicles relying on open software protocols and connecting with in-vehicle electric infrastructures play a vital role in strengthening their security framework.
-With the need and integration of complex systems like the perception one, these vehicles essentially evolve into a highly sophisticated set of technologies influencing each other\cite{sec-by-design}.
+With the need and integration of complex systems like the perception one, these vehicles essentially evolve into a highly sophisticated set of technologies influencing each other~\cite{sec-by-design}.
 
 \subsubsection{Levels of Automation}\label{subsubsec:levels-of-automation}
-The level of driving automation is determined by the specific roles assigned to both the driving automation system feature and the human user in performing the dynamic driving task (DDT) and DDT fallback\cite{sae_j3016_2021}.
+The level of driving automation is determined by the specific roles assigned to both the driving automation system feature and the human user in performing the dynamic driving task (DDT) and DDT fallback~\cite{sae_j3016_2021}.
 The manufacturer of the automation system defines the requirements, operational design domain (ODD), and operating characteristics of the feature, including its level of automation.
 Additionally, the manufacturer outlines how the feature should be properly used, ensuring that its capabilities and limitations are clearly understood and followed during operation.
-The Society of Automotive Engineers (SAE) has defined six levels of driving automation, ranging from no automation (Level 0) to full automation (Level 5)\cite{sae_j3016_2021}.
+The Society of Automotive Engineers (SAE) has defined six levels of driving automation, ranging from no automation (Level 0) to full automation (Level 5)~\cite{sae_j3016_2021}.
 
 \begin{enumerate}
     \item \textbf{Level 0 (No Automation):} The human driver is responsible for all aspects of the dynamic driving task.
@@ -58,7 +58,7 @@ The Society of Automotive Engineers (SAE) has defined six levels of driving auto
     \item \textbf{Level 2 (Partial Automation):} The vehicle can control both steering and acceleration/deceleration simultaneously under certain conditions, but the driver must remain engaged and monitor the environment (e.g. combined LKA and ADC in traffic conditions).
     \item \textbf{Level 3 (Conditional Automation):} The vehicle can perform all aspects of the DDT under certain conditions like in traffic jams or highway driving, but the driver must be ready to take over when prompted.
     \item \textbf{Level 4 (High Automation):} The user (become passenger) does not need to supervise the Automated driving system (ADS) or be receptive to a request to intervene while the
-    ADS is engaged, restricted to some conditions (e.g., Google's Self-Driving Car\cite{teoh2017rage}).
+    ADS is engaged, restricted to some conditions (e.g., Google's Self-Driving Car~\cite{teoh2017rage}).
     \item \textbf{Level 5 (Full Automation):} The vehicle can perform all aspects of the DDT under all conditions without human intervention.
 \end{enumerate}
 
@@ -81,20 +81,20 @@ Levels 0–2 are generally classified as driver-assisted systems, while Levels 3
 \subsection{Overview of AVs Architecture}\label{subsec:overview-on-avs-architecture}
 
 This section provides a high-level overview of the autonomous vehicles (AVs) architecture and the key parts that enable their operation.
-Moreover, an alternative architecture proposed in\cite{ahangar2021survey} will be briefly discussed.
-The architecture of AVs is designed to integrate various hardware and software components that work together to perceive the environment, make decisions, and control the vehicle\cite{architecture}.
+Moreover, an alternative architecture proposed in~\cite{ahangar2021survey} will be briefly discussed.
+The architecture of AVs is designed to integrate various hardware and software components that work together to perceive the environment, make decisions, and control the vehicle~\cite{architecture}.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/state-architecture}
     \caption{Hierarchical architecture of autonomous vehicles control.}
-    \footnotesize{From \cite{architecture} }
+    \footnotesize{From~\cite{architecture} }
     \label{fig:architecture}
 \end{figure}
 
-The overall architecture presented in\ref{fig:architecture} is composed of layers of hardware and software that interact to enable the vehicle to operate autonomously.
+The overall architecture presented in~\ref{fig:architecture} is composed of layers of hardware and software that interact to enable the vehicle to operate autonomously.
 In its simplest and first form, the architecture consists of four main layers: perception, decision and planning, control and reflexive.
-Each layer is responsible for a specific aspect of the AV's operation, from sensing the environment to executing driving maneuvers reflexively\cite{architecture}.
+Each layer is responsible for a specific aspect of the AV's operation, from sensing the environment to executing driving maneuvers reflexively~\cite{architecture}.
 
 \begin{enumerate}
     \item \textbf{Perception}: This stage involves sensing the AV's surroundings using sensors.
@@ -112,18 +112,18 @@ Each layer is responsible for a specific aspect of the AV's operation, from sens
 The proposed and secured architecture extends this architecture providing four new layers: monitoring, analysis, decision-making, and visualization.
 Any services, processes, and communication are monitored by the agents and analyzed by the process controllers.
 A set of decision controllers act on the information from the process controllers.
-The decisions are archived in a black box, while the analysis, reporting, and visualization layers are accessible both within the vehicle and through an external Virtual Security Operations Center (VSOC), allowing the user to consult them as needed\cite{adu-kyere2023self-aware}.
+The decisions are archived in a black box, while the analysis, reporting, and visualization layers are accessible both within the vehicle and through an external Virtual Security Operations Center (VSOC), allowing the user to consult them as needed~\cite{adu-kyere2023self-aware}.
 
 What can be easily noted is the need to monitor and analyze the data that are exchanged between the different components of the AVs.
 Also, the data that are exchanged between the vehicle and the infrastructure should be monitored and analyzed to prevent and in case recover from possible attacks.
-Some possible research directions could be the development of a secure and efficient monitoring system that can analyze the data in real-time and take action in case of attacks\ref{subsec:intrusion-detection-and-prevention-systems}.
+Some possible research directions could be the development of a secure and efficient monitoring system that can analyze the data in real-time and take action in case of attacks~\ref{subsec:intrusion-detection-and-prevention-systems}.
 
 \subsection{Social implications}\label{subsec:social-implications}
 
 This section aims to provide a little insight into the social implications of autonomous vehicles.
-The introduction of autonomous vehicles (AVs) is expected to have a profound impact on society\cite{thomas2020perception},
-transforming transportation systems\cite{intelligent_transportation_2023}, urban planning\cite{impact_autonomous_vehicles_2018},
-and the economy~\cite{economic_aspects_2020}.
+The introduction of autonomous vehicles (AVs) is expected to have a profound impact on society~\cite{thomas2020perception},
+transforming transportation systems~\cite{intelligent_transportation_2023}, urban planning~\cite{impact_autonomous_vehicles_2018},
+and the economy~~\cite{economic_aspects_2020}.
 Some potential pros and cons of AVs are summarized in Table~\ref{tab:table}.
 
 \begin{table}[ht]
@@ -135,7 +135,7 @@ Some potential pros and cons of AVs are summarized in Table~\ref{tab:table}.
         Time saved & Job losses \\ \hline
         Comfort & Price \\ \hline
     \end{tabular}
-    \caption{Some pros and cons from \cite{ahangar2021survey} }\label{tab:table}
+    \caption{Some pros and cons from~\cite{ahangar2021survey} }\label{tab:table}
 \end{table}
 
 The consideration of time saved
@@ -146,15 +146,15 @@ Some references to explore in depth the social implications are left above.
 
 Before introducing new threats of new autonomous vehicle technologies, it is important to understand some historical key attacks.
 In the past, researchers have demonstrated various attacks on AVs, including remote hijacking, sensor spoofing, and data breaches.
-The attack surface of AVs is expanding due to the increasing complexity of these systems, which rely on a combination of hardware, software, and communication technologies\cite{cybersec}.
+The attack surface of AVs is expanding due to the increasing complexity of these systems, which rely on a combination of hardware, software, and communication technologies~\cite{cybersec}.
 This expansion is due to the aggressive attempts of manufacturers to
 make vehicles fully autonomous in a short period of time and without considering the cybersecurity implications.
 Focussing always on the functionalities offered to the driver in terms of comfort, the security of the vehicle has been considered as a secondary aspect, leading to a lot of vulnerabilities that can be exploited by attackers.
 
 Some famous attacks that bring the attention to the cybersecurity of AVs are:
 \begin{enumerate}
-    \item The Jeep Cherokee hack in 2015: researchers remotely hijacked a Jeep Cherokee through its infotainment system, demonstrating the risks of cyber-attacks on connected vehicles\cite{miller2015remote}.
-    \item The Tesla Model S hack in 2016: researchers exploited vulnerabilities in the vehicle's software to take control of the car's brakes, door locks, and other critical systems\cite{tesla_hack}.
+    \item The Jeep Cherokee hack in 2015: researchers remotely hijacked a Jeep Cherokee through its infotainment system, demonstrating the risks of cyber-attacks on connected vehicles~\cite{miller2015remote}.
+    \item The Tesla Model S hack in 2016: researchers exploited vulnerabilities in the vehicle's software to take control of the car's brakes, door locks, and other critical systems~\cite{tesla_hack}.
     \item The Nissan Leaf hack in 2016: researchers demonstrated how an attacker could remotely control the vehicle's heating and air conditioning systems, drain the battery, and access the driver's personal information.
     \item The VW group hacked in 2016: researchers discovered vulnerabilities in the keyless entry systems of several VW group vehicles, allowing attackers to unlock the doors and start the engine without the key fob~\cite{garcia2016lock}.
     \item The Tesla cybertruck: it continues to be exploited by attackers to gain access to the vehicle's systems and control its functions remotely.
